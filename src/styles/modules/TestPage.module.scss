@@ -1,0 +1,12 @@
+.testPage {
+  display: flex;
+  gap: 2rem;
+}
+
+.questionArea {
+  flex-grow: 1;
+}
+
+.opticArea {
+  flex-shrink: 0;
+}
