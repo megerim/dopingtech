@@ -9,10 +9,10 @@ export const Optic = () => {
         <h3>Türkçe</h3>
         <p>{soruSayisi} Soru</p>
       </div>
-      <div>
+      <div className={styles.opticGrid}>
         {Array.from({ length: soruSayisi }).map((_, i) => {
           const num = i + 1;
-          return <div key={num}>{num}</div>;
+          return <div key={num} className={styles.questionNumber}>{num}</div>;
         })}
       </div>
     </div>

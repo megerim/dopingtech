@@ -1,0 +1,19 @@
+.optionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.optionLetter {
+  font-weight: bold;
+  margin-right: 1rem;
+}
