@@ -1,9 +1,10 @@
 .card {
   width: 352px;
   height: 719px;
-  background-color: #ffffff;
+  background-color: white;
   border-radius: 10px;
-  border: 1px solid #f0f0f0;
+  box-shadow: 0px 12px 50px rgba(0, 0, 0, 0.04);
+  border: 0;
   position: relative;
   overflow: hidden;
 }
@@ -73,8 +74,13 @@
     height: 100%;
     top: 0;
     left: 0;
-    background-color: #f8f9fa;
+  background-color: #03a9f1;
+  opacity: 0.07;
     border-radius: 10px;
+
+  &--medium { opacity: 0.1; }
+  &--heavy { opacity: 0.24; }
+  &--light { opacity: 0.07; }
   }
 
   &__inner {
@@ -110,12 +116,13 @@
   font-weight: 700;
   font-size: 16px;
   cursor: pointer;
-  border: 1px solid #dee2e6;
-  background-color: #ffffff;
+  border: 1px solid;
+  background-color: #edf9fe;
   padding: 0;
 
 
   &--default {
-    color: black;
+    border-color: #4993b1;
+    color: #4993b1;
   }
 }

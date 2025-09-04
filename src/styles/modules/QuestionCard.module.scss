@@ -1,5 +1,16 @@
 .questionCard {
-  background-color: #ffffff;
-  padding: 2rem;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0px 12px 50px rgba(0, 0, 0, 0.04);
+  border: none;
   border-radius: 10px;
+  padding: 20px;
+}
+
+.questionText p {
+  font-family: 'Manrope', Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 30px;
+  color: #2c3e50;
 }

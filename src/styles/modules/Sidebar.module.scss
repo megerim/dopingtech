@@ -9,18 +9,23 @@
   top: 0;
   z-index: 10;
   padding-top: 2rem;
-  border-right: 1px solid #e0e6ed;
 }
 
 .logo {
   width: 44px;
-  margin-bottom: 4rem;
+  height: 42px;
+  margin-top: 39px;
+  margin-left: 29px;
+  align-self: flex-start;
 }
 
 .mainNav {
+  margin-top: 96px;
+  margin-left: 34px;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 25px;
+  align-self: flex-start;
 }
 
 .navIcon {
@@ -28,13 +33,11 @@
   height: 30px;
   border-radius: 9px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(180deg, #899ef3 0%, #6980da 100%);
+  background: linear-gradient(180deg, rgba(137, 158, 243, 1) 0%, rgba(105, 128, 218, 1) 100%);
 
   img {
     width: 18px;
     height: 18px;
+    margin: 6px;
   }
 }

@@ -6,7 +6,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  padding-bottom: 0;
+  height: 111px;
 }
 
 .headerLeft {
@@ -24,8 +25,9 @@
 }
 
 .pageTitle {
-  font-size: 24px;
+  font-family: 'Manrope', Helvetica, sans-serif;
   font-weight: 700;
+  font-size: 24px;
   margin: 0;
   color: #2c3e50;
 }
@@ -41,6 +43,7 @@
   align-items: center;
   gap: 1rem;
   background-color: #edf2f4;
+  opacity: 0.7;
   padding: 0.75rem 1.25rem;
   border-radius: 10px;
 
