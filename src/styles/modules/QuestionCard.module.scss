@@ -78,3 +78,26 @@
   margin-top: 24px;
   margin-bottom: 32px;
 }
+
+.highlight {
+  font-weight: 800;
+  text-decoration: underline;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background-color: rgba(26, 188, 156, 0.1);
+  }
+}
+
+.highlightClicked {
+  background-color: rgba(26, 188, 156, 0.2);
+}
+
+.bold {
+  font-weight: 800;
+}
+
+.highlight.bold {
+  font-weight: 800;
+  text-decoration: underline;
+}

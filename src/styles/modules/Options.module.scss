@@ -21,12 +21,24 @@
     transition: all 0.2s ease;
 
     &--default {
-      background-color: #ededed;
+      background-color: #EDF2F4;
       opacity: 0.4;
     }
 
     &--selected {
-      background-color: rgba(134, 134, 134, 0.1);
+      background-color: rgba(44, 62, 80, 0.1);
+      border: 1px solid #2C3E50;
+    }
+
+    &--correct {
+      background-color: rgba(26, 188, 156, 0.05);
+      border: 2px solid #1ABC9C;
+      opacity: 1;
+    }
+
+    &--incorrect {
+      background-color: #F85050;
+      opacity: 1;
     }
   }
 
@@ -52,13 +64,41 @@
     line-height: 24px;
 
     .text--default {
-      color: black;
+      color: #2C3E50;
+      font-weight: 400;
+    }
+
+    .underline {
+      text-decoration: underline;
+    }
+    
+    .bold {
+      font-weight: 700;
+    }
+    
+    .underline.bold {
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    .text--correct {
+      color: #1ABC9C;
+      font-weight: 700;
+    }
+
+    .text--incorrect {
+      color: #FFFFFF;
       font-weight: 500;
+      
+      .underline,
+      .bold,
+      .underline.bold {
+        color: inherit;
+      }
     }
 
     .bold {
       font-weight: 700;
-      text-decoration: underline;
     }
   }
 }
@@ -71,17 +111,18 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  border: 2px solid black;
+  border: 1.5px solid #2C3E50;
   box-sizing: border-box;
   padding: 3px;
   background-color: transparent;
+  transition: border-color 0.3s ease;
 }
 
 .checkbox__dot {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background-color: black;
+  background-color: #2C3E50;
   opacity: 0;
   transition: opacity 0.2s ease;
 }
@@ -93,6 +134,24 @@
 /* display dot on select */
 .answerItem input[type='radio']:checked ~ .checkbox .checkbox__dot {
   opacity: 1;
+}
+
+/* Change checkbox colors based on answer state */
+.answerItem__background--correct ~ .answerItem__icon .checkbox {
+  border-color: #1ABC9C;
+}
+
+.answerItem__background--correct ~ .answerItem__icon .checkbox__dot {
+  background-color: #1ABC9C;
+  opacity: 0;
+}
+
+.answerItem__background--incorrect ~ .answerItem__icon .checkbox {
+  border-color: #FFFFFF;
+}
+
+.answerItem__background--incorrect ~ .answerItem__icon .checkbox__dot {
+  background-color: #FFFFFF;
 }
 
 /* visually hidden input for accessibility */

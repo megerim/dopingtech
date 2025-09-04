@@ -1,12 +1,27 @@
+import React from 'react';
 import styles from '../../styles/modules/QuestionCard.module.scss';
 import { Options } from './Options';
+import { useAppSelector } from '../../store/hooks';
+import { formatTextWithStyles } from '../../utils/textFormatter';
 
 export const QuestionCard = () => {
+  
+  const { questions, currentQuestionIndex, isLoading, error } = useAppSelector(
+    (s) => s.test
+  );
+  const current = questions[currentQuestionIndex];
+
   return (
     <div className={styles.questionCard}>
       <div className={styles.headerSection}>
         <div className={styles.badge}>
-          <span>Soru: Türkçe #1</span>
+          <span>
+            {isLoading
+              ? 'Yükleniyor…'
+              : error
+              ? `Hata: ${error}`
+              : `Soru: Türkçe #${currentQuestionIndex + 1}`}
+          </span>
         </div>
         <div className={styles.actionButtons}>
           <button className={styles.actionButton}>
@@ -27,19 +42,31 @@ export const QuestionCard = () => {
       </div>
 
       <div className={styles.contentSection}>
-        <div className={styles.quoteText}>
-          <p>
-            "Şair, şiirlerinde hava alacak boşluk bırakmıyor, her şeyi
-            söylüyor..."
-          </p>
-        </div>
-        <div className={styles.question}>
-          <p>
-            Bu parçada geçen "hava alacak boşluk bırakmamak" sözüyle anlatılmak
-            istenen nedir?
-          </p>
-        </div>
-        <Options />
+        {(() => {
+          if (current) {
+            return (
+              <>
+                <div className={styles.quoteText}>
+                  <p>
+                    {formatTextWithStyles({
+                      text: current.text,
+                      className: {
+                        underline: styles.highlight,
+                        bold: styles.bold,
+                      },
+                    })}
+                  </p>
+                </div>
+                <div className={styles.question}>
+                  <p>Seçeneklerden birini seçiniz.</p>
+                </div>
+                <Options />
+              </>
+            );
+          } else {
+            return null;
+          }
+        })()}
       </div>
     </div>
   );

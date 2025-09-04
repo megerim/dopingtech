@@ -1,0 +1,28 @@
+{
+  "questions": [
+    {
+      "id": "1",
+      "text": "Aşağıdaki [u]cümlelerin[/u] hangisinde [b]özne-yüklem uyuşmazlığı[/b] vardır?",
+      "options": {
+        "A": "Bu sokakta [u]oturanların bazıları[/u] sabah [b]erken kalkar.[/b]",
+        "B": "[u]Öğrencilerin çoğu[/u] bu konuyu anlamadı.",
+        "C": "Kütüphanedeki [b]kitapların hepsi[/b] yenidir.",
+        "D": "[u]Arkadaşlarımla birlikte[/u] sinemaya [b]gidiyorum.[/b]",
+        "E": "[u]Birçok insan[/u] bu [b]filmi beğenmiyorlar.[/b]"
+      },
+      "correctAnswer": "E"
+    },
+    {
+      "id": "2",
+      "text": "Aşağıdaki cümlelerin hangisinde [u]anlatım bozukluğu[/u] [b]vardır?[/b]",
+      "options": {
+        "A": "[u]Bu konuyu[/u] dün [b]detaylıca[/b] görüştük.",
+        "B": "[b]Sınavdan sonra[/b] arkadaşlarıyla buluştu.",
+        "C": "Beni [u]arayıp haber vereceğini[/u] söyledi.",
+        "D": "[u]Yeni aldığı kitapları[/u] masanın [b]üzerinde bırakmış.[/b]",
+        "E": "Toplantıya [b]herkes ve Ayşe[/b] katıldı."
+      },
+      "correctAnswer": "E"
+    }
+  ]
+}
