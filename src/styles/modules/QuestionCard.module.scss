@@ -1,16 +1,80 @@
 .questionCard {
-  width: 100%;
+  position: relative;
   background-color: white;
   box-shadow: 0px 12px 50px rgba(0, 0, 0, 0.04);
   border: none;
   border-radius: 10px;
-  padding: 20px;
+  overflow: hidden;
+  padding: 0; 
 }
 
-.questionText p {
+.headerSection {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  width: calc(100% - 40px);
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.badge {
+  background-color: #2c3e50;
+  color: white;
+  border-radius: 5px;
+  padding: 6px 12px;
   font-family: 'Manrope', Helvetica, sans-serif;
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 5px;
+}
+
+.actionButton {
+  width: 50px;
+  height: 50px;
+  background-color: #ededed;
+  opacity: 0.4;
+  border-radius: 10px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.contentSection {
+  padding: 100px 20px 20px;
+}
+
+.quoteText p, .question p {
+  font-family: 'Manrope', Helvetica, sans-serif;
   font-size: 18px;
   line-height: 30px;
-  color: #2c3e50;
+  color: black;
+}
+
+.quoteText {
+  font-weight: 400;
+}
+
+.question {
+  font-weight: 700;
+  margin-top: 24px;
+  margin-bottom: 32px;
 }
