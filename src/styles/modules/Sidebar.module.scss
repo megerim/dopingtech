@@ -1,43 +1,191 @@
 .sidebar {
   width: 97px;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 10;
-  padding-top: 2rem;
+  background: #fff;
+  border-right: 1px solid #F0F1F3;
+  box-shadow: 4px 4px 16px rgba(112, 144, 176, 0.1);
 }
 
 .logo {
+  margin: 39px 0 0 29px;
   width: 44px;
   height: 42px;
-  margin-top: 39px;
-  margin-left: 29px;
-  align-self: flex-start;
+  
+  img {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .mainNav {
-  margin-top: 96px;
-  margin-left: 34px;
+  margin-top: 54px;
+  padding-left: 19px;
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  align-self: flex-start;
+  gap: 5px;
 }
 
 .navIcon {
-  width: 30px;
-  height: 30px;
-  border-radius: 9px;
+  width: 60px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  background: linear-gradient(180deg, rgba(137, 158, 243, 1) 0%, rgba(105, 128, 218, 1) 100%);
-
+  border-radius: 10px;
+  transition: background 0.2s;
+  position: relative;
+  
+  &:hover {
+    background: #F3F7F9;
+  }
+  
+  // Inner icon button
+  &::after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    position: absolute;
+  }
+  
   img {
     width: 18px;
     height: 18px;
-    margin: 6px;
+    filter: brightness(0) invert(1);
+    z-index: 1;
+    position: relative;
+  }
+  
+  // Icon backgrounds
+  &--grid::after {
+    background: linear-gradient(180deg, #899EF3 0%, #6980DA 100%);
+  }
+  
+  &--book::after {
+    background: linear-gradient(180deg, #EEA75D 0%, #D78C3F 100%);
+  }
+  
+  &--list::after {
+    background: linear-gradient(180deg, #FF73C7 0%, #F75EBA 100%);
+  }
+  
+  &--check::after {
+    background: linear-gradient(180deg, #3CD88D 0%, #4DBE87 100%);
+  }
+  
+  &--inspect::after {
+    background: linear-gradient(180deg, #6CCCEA 0%, #55B4D2 100%);
+  }
+  
+  &--activity::after {
+    background: linear-gradient(180deg, #FFD873 0%, #F2C44D 100%);
+  }
+  
+  &--special::after {
+    background: linear-gradient(180deg, #FFDDE1 -5%, #F3AFB8 96.67%);
+    outline: 1px solid #F8C1C8;
+    outline-offset: 2px;
+  }
+  
+  &--special img {
+    filter: none;
+  }
+}
+
+.applications {
+  margin-top: 60px;
+  padding-left: 19px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.appIcon {
+  width: 60px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background 0.2s;
+  position: relative;
+  
+  &:hover {
+    background: #F3F7F9;
+  }
+  
+  // Inner app icon
+  &::after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    position: absolute;
+  }
+  
+  img {
+    width: 20px;
+    height: 20px;
+    z-index: 1;
+    position: relative;
+  }
+  
+  &--cozucu::after {
+    background: linear-gradient(180deg, #D9E3EB 0%, #EEF2F3 100%);
+  }
+  
+  &--simdi::after {
+    background: #2C2C60;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  &--kocum::after {
+    background: radial-gradient(65.19% 65.19% at 25.31% 13.5%, #6DB1DE 0%, #2073AA 100%);
+  }
+}
+
+.feedbackSection {
+  position: absolute;
+  bottom: 50px;
+  left: 19px;
+}
+
+.feedbackIcon {
+  width: 60px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background 0.2s;
+  position: relative;
+  
+  &:hover {
+    background: #F3F7F9;
+  }
+  
+  // Inner feedback icon
+  &::after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    background: linear-gradient(180deg, #E7843C 0%, #E7983C 100%);
+    position: absolute;
+  }
+  
+  img {
+    width: 18px;
+    height: 18px;
+    filter: brightness(0) invert(1);
+    transform: scaleX(-1);
+    z-index: 1;
+    position: relative;
   }
 }
