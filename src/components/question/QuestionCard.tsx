@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from '../../styles/modules/QuestionCard.module.scss';
 import { Options } from './Options';
 import { useAppSelector } from '../../store/hooks';
@@ -46,20 +45,28 @@ export const QuestionCard = () => {
           if (current) {
             return (
               <>
-                <div className={styles.quoteText}>
+                {current.description && (
+                  <div className={styles.quoteText}>
+                    <p>{current.description}</p>
+                  </div>
+                )}
+                <div className={styles.question}>
                   <p>
                     {formatTextWithStyles({
-                      text: current.text,
+                      text: current.question,
                       className: {
                         underline: styles.highlight,
                         bold: styles.bold,
+                        both: styles.both,
                       },
                     })}
                   </p>
                 </div>
-                <div className={styles.question}>
-                  <p>Seçeneklerden birini seçiniz.</p>
-                </div>
+                {current.text && (
+                  <div className={styles.quoteText}>
+                    <p>{current.text}</p>
+                  </div>
+                )}
                 <Options />
               </>
             );

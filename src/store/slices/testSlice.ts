@@ -2,7 +2,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type Question = {
   id: string;
-  text: string;
+  description?: string;
+  question: string;
+  text?: string;
   options: Record<string, string>;
   correctAnswer?: string;
 };

@@ -1,10 +1,9 @@
-import React from 'react';
-
 type FormatTextParams = {
   text: string;
   className?: {
     underline?: string;
     bold?: string;
+    both?: string;
   };
 };
 
@@ -26,7 +25,12 @@ export const formatTextWithStyles = ({
     boldClass = className.bold;
   }
 
-  const regex = /\[u\](.*?)\[\/u\]|\[b\](.*?)\[\/b\]/g;
+  let bothClass = 'both';
+  if (className.both) {
+    bothClass = className.both;
+  }
+
+  const regex = /\[bu\](.*?)\[\/bu\]|\[u\](.*?)\[\/u\]|\[b\](.*?)\[\/b\]/g;
   const parts: React.ReactNode[] = [];
 
   let lastIndex = 0;
@@ -41,17 +45,24 @@ export const formatTextWithStyles = ({
     }
 
     if (match[1] !== undefined) {
-      // underline group
+      // both bold and underline group
       parts.push(
-        <span key={`u-${key++}`} className={underlineClass}>
+        <span key={`bu-${key++}`} className={bothClass}>
           {match[1]}
         </span>
       );
     } else if (match[2] !== undefined) {
+      // underline group
+      parts.push(
+        <span key={`u-${key++}`} className={underlineClass}>
+          {match[2]}
+        </span>
+      );
+    } else if (match[3] !== undefined) {
       // bold group
       parts.push(
         <span key={`b-${key++}`} className={boldClass}>
-          {match[2]}
+          {match[3]}
         </span>
       );
     }
