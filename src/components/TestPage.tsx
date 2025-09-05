@@ -1,18 +1,25 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Layout } from './layout/Layout';
 import { QuestionCard } from './question/QuestionCard';
 import { Optic } from './optic/Optic';
 import styles from '../styles/modules/TestPage.module.scss';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { loadTestStart, goToNextQuestion, goToPreviousQuestion, finishTest, toggleShowAnswers } from '../store/slices/testSlice';
+import { LeaveTestModal } from './LeaveTestModal';
 
 export const TestPage = () => {
   const dispatch = useAppDispatch();
   const { isFinished, showAnswers } = useAppSelector((s) => s.test);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     dispatch(loadTestStart());
   }, [dispatch]);
+
+  const handleConfirmLeave = () => {
+    dispatch(finishTest());
+    setIsModalOpen(false);
+  };
   return (
     <Layout>
       <div className={styles.testPageContainer}>
@@ -38,7 +45,7 @@ export const TestPage = () => {
                 <span className={styles.switch__slider} />
               </button>
             </div>
-            <button className={styles.endTestButton} onClick={() => dispatch(finishTest())}>
+            <button className={styles.endTestButton} onClick={() => isFinished ? null : setIsModalOpen(true)}>
               <div className={styles.endTestButton__icon}>
                 <img src="/dh/shutdown.png" alt="End Test" />
               </div>
@@ -66,6 +73,11 @@ export const TestPage = () => {
           </div>
         </div>
       </div>
+      <LeaveTestModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={handleConfirmLeave}
+      />
     </Layout>
   );
 };
