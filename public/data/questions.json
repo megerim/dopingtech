@@ -1,28 +1,190 @@
-{
-  "questions": [
-    {
-      "id": "1",
-      "text": "Aşağıdaki [u]cümlelerin[/u] hangisinde [b]özne-yüklem uyuşmazlığı[/b] vardır?",
-      "options": {
-        "A": "Bu sokakta [u]oturanların bazıları[/u] sabah [b]erken kalkar.[/b]",
-        "B": "[u]Öğrencilerin çoğu[/u] bu konuyu anlamadı.",
-        "C": "Kütüphanedeki [b]kitapların hepsi[/b] yenidir.",
-        "D": "[u]Arkadaşlarımla birlikte[/u] sinemaya [b]gidiyorum.[/b]",
-        "E": "[u]Birçok insan[/u] bu [b]filmi beğenmiyorlar.[/b]"
-      },
-      "correctAnswer": "E"
+[
+  {
+    "id": "q1",
+    "description": "Gördüklerimi anlattım, duydukları mı yazdım, bildiklerimi söyledim. Kimsenin gözüne girmek için yalan söylemedim, doğruyu söyledim de kimsenin gözünden düştüm.",
+    "question": "[b]Bu sözleri söyleyen kişi için aşağıdakilerden hangisi söylenebilir?[/b]",
+    "options": {
+      "A": "Kendini [bu]beğenmiş[/bu] biridir",
+      "B": "[bu]Dürüst[/bu] ve [bu]ilkeli[/bu] bir kişiliğe sahiptir",
+      "C": "Çevresindeki insanlara [bu]değer vermez[/bu]",
+      "D": "Başkalarının fikirlerine [bu]saygı duymaz[/bu]",
+      "E": "Yaptığı işlerde [bu]başarısızdır[/bu]"
     },
-    {
-      "id": "2",
-      "text": "Aşağıdaki cümlelerin hangisinde [u]anlatım bozukluğu[/u] [b]vardır?[/b]",
-      "options": {
-        "A": "[u]Bu konuyu[/u] dün [b]detaylıca[/b] görüştük.",
-        "B": "[b]Sınavdan sonra[/b] arkadaşlarıyla buluştu.",
-        "C": "Beni [u]arayıp haber vereceğini[/u] söyledi.",
-        "D": "[u]Yeni aldığı kitapları[/u] masanın [b]üzerinde bırakmış.[/b]",
-        "E": "Toplantıya [b]herkes ve Ayşe[/b] katıldı."
-      },
-      "correctAnswer": "E"
-    }
-  ]
-}
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q2",
+    "question": "[b]Aşağıdaki cümlelerin hangisinde \"de/da\" bağlacının yazımı yanlıştır?[/b]",
+    "options": {
+      "A": "Sen [bu]de[/bu] bizimle gelecek misin?",
+      "B": "Kitap masa[bu]da[/bu] duruyor.",
+      "C": "O [bu]da[/bu] bu konuda haklı.",
+      "D": "Ev[bu]de[/bu] kimse yoktu.",
+      "E": "Ben[bu]de[/bu] para kalmadı."
+    },
+    "correctAnswer": "E"
+  },
+  {
+    "id": "q3",
+    "description": "İnsanın düşmanı kendi bilgisizliğidir. Bilgisizlik karanlıktır, aydınlanmak için okumak gerekir.",
+    "question": "[b]Bu cümlede \"karanlık\" sözcüğü hangi anlamda kullanılmıştır?[/b]",
+    "options": {
+      "A": "[bu]Işığın olmadığı[/bu] ortam",
+      "B": "[bu]Cahillik[/bu], bilgisizlik",
+      "C": "[bu]Kötü niyet[/bu]",
+      "D": "[bu]Belirsizlik[/bu]",
+      "E": "[bu]Gizlilik[/bu]"
+    },
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q4",
+    "question": "[b]\"Güneş doğmadan memleketin her yanı bembeyaz kar örtüsüyle kaplanmıştı.\" cümlesindeki \"doğmadan\" sözcüğünün cümlede üstlendiği görev aşağıdakilerden hangisidir?[/b]",
+    "options": {
+      "A": "Özne",
+      "B": "Nesne",
+      "C": "Zarf tümleci",
+      "D": "Dolaylı tümleç",
+      "E": "Yüklem"
+    },
+    "correctAnswer": "C"
+  },
+  {
+    "id": "q5",
+    "description": "Her akşam aynı saatte gelir, aynı koltuğa oturur, aynı gazeteyi okurdu. Yıllardır değişmeyen bu alışkanlığı herkes tarafından bilinirdi.",
+    "question": "[b]Bu parçada anlatılan kişi ile ilgili aşağıdakilerden hangisi söylenebilir?[/b]",
+    "options": {
+      "A": "[bu]Yeniliklere açık[/bu] biridir",
+      "B": "[bu]Düzenli[/bu] ve [bu]alışkanlıklarına bağlı[/bu]dır",
+      "C": "Sosyal ilişkileri [bu]güçlüdür[/bu]",
+      "D": "[bu]Değişimi seven[/bu] biridir",
+      "E": "Plan yapmayı [bu]sevmez[/bu]"
+    },
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q6",
+    "question": "[b]Aşağıdaki cümlelerin hangisinde anlatım bozukluğu vardır?[/b]",
+    "options": {
+      "A": "Öğretmen, öğrencilerine kitap okumanın önemini anlattı.",
+      "B": "Yarınki toplantıya herkesin katılması gerekiyor.",
+      "C": "Bu konuda sizinle aynı fikirdeyim.",
+      "D": "Arkadaşımla [bu]beraber[/bu] sinemaya gittik.",
+      "E": "Sınav sonuçları açıklanınca herkes sevinçten havalara uçtu."
+    },
+    "correctAnswer": "D"
+  },
+  {
+    "id": "q7",
+    "description": "Dil dediğin çelik gibi olmalı ki paslanmasın. İşleye işleye parlamalı, konuşa konuşa gelişmeli.",
+    "question": "[b]Bu sözde \"çelik\" sözcüğü ile anlatılmak istenen aşağıdakilerden hangisidir?[/b]",
+    "options": {
+      "A": "Dilin [bu]sert[/bu] olması gerektiği",
+      "B": "Dilin [bu]kullanıldıkça güzelleşeceği[/bu]",
+      "C": "Dilin [bu]değişmemesi[/bu] gerektiği",
+      "D": "Dilin [bu]korunması[/bu] gerektiği",
+      "E": "Dilin kurallarının [bu]katı[/bu] olması"
+    },
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q8",
+    "question": "[b]\"Kapı açılır açılmaz içeri fırtına gibi girdi.\" cümlesindeki \"açılır açılmaz\" ifadesi hangi anlam ilişkisi içermektedir?[/b]",
+    "options": {
+      "A": "Neden-sonuç",
+      "B": "Amaç-sonuç",
+      "C": "Zaman",
+      "D": "Karşılaştırma",
+      "E": "Koşul"
+    },
+    "correctAnswer": "C"
+  },
+  {
+    "id": "q9",
+    "description": "Başarının sırrı başlamaktır. Başlamanın sırrı ise karmaşık ve bunaltıcı işleri, yapılabilir küçük parçalara ayırmaktır.",
+    "question": "[b]Bu sözde vurgulanmak istenen düşünce aşağıdakilerden hangisidir?[/b]",
+    "options": {
+      "A": "İşleri [bu]ertelememek[/bu] gerekir",
+      "B": "Büyük işleri [bu]küçük adımlara bölerek[/bu] yapmak gerekir",
+      "C": "Başarı için [bu]çok çalışmak[/bu] şarttır",
+      "D": "[bu]Karmaşık işlerden[/bu] kaçınmak gerekir",
+      "E": "Her işin bir [bu]sırrı[/bu] vardır"
+    },
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q10",
+    "question": "[b]Aşağıdaki cümlelerin hangisinde \"ki\" bağlacı yanlış yazılmıştır?[/b]",
+    "options": {
+      "A": "O kadar yorgundum [bu]ki[/bu] ayakta duramıyordum.",
+      "B": "Sanırım [bu]ki[/bu] bu iş olmayacak.",
+      "C": "Emin ol [bu]ki[/bu] seni unutmadım.",
+      "D": "İnanıyorum[bu]ki[/bu] başaracaksın.",
+      "E": "Düşünüyorum [bu]ki[/bu] haklısın."
+    },
+    "correctAnswer": "D"
+  },
+  {
+    "id": "q11",
+    "description": "Ağaç yaşken eğilir.",
+    "question": "[b]Bu atasözünün anlamı aşağıdakilerden hangisidir?[/b]",
+    "options": {
+      "A": "[bu]Yaşlılara[/bu] saygı gösterilmelidir",
+      "B": "Eğitim [bu]küçük yaşta[/bu] verilmelidir",
+      "C": "Ağaçlar [bu]gençken[/bu] daha güzeldir",
+      "D": "İnsanlar [bu]yaşlandıkça[/bu] değişmez",
+      "E": "[bu]Doğa[/bu] her zaman öğreticidir"
+    },
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q12",
+    "question": "[b]\"Yavaş yavaş alışıyorum bu şehre.\" cümlesindeki \"alışıyorum\" fiili hangi kipe örnektir?[/b]",
+    "options": {
+      "A": "Geniş zaman",
+      "B": "Şimdiki zaman",
+      "C": "Gelecek zaman",
+      "D": "Geçmiş zaman",
+      "E": "Emir kipi"
+    },
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q13",
+    "description": "Kitaplar, geçmişten geleceğe uzanan köprülerdir. Onlar sayesinde zamanı aşar, mekanları gezeriz.",
+    "question": "[b]Bu cümlede kitaplar için kullanılan \"köprü\" benzetmesinin nedeni aşağıdakilerden hangisidir?[/b]",
+    "options": {
+      "A": "Kitapların [bu]pahalı[/bu] olması",
+      "B": "Kitapların [bu]farklı zamanları birleştirmesi[/bu]",
+      "C": "Kitapların [bu]ağır[/bu] olması",
+      "D": "Kitapların [bu]kolay[/bu] okunması",
+      "E": "Kitapların [bu]çok satılması[/bu]"
+    },
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q14",
+    "question": "[b]Aşağıdaki cümlelerin hangisinde noktalama işareti yanlış kullanılmıştır?[/b]",
+    "options": {
+      "A": "Ali[bu],[/bu] Veli ve Ayşe sinemaya gitti.",
+      "B": "Yarın [bu]-[/bu]eğer hava güzel olursa[bu]-[/bu] pikniğe gideceğiz.",
+      "C": "[bu]\"[/bu]Bu işi başaracağız.[bu]\"[/bu] dedi.",
+      "D": "Saatler[bu]:[/bu] 09.00-18.00 arası açık.",
+      "E": "Ne zaman geleceksin[bu].[/bu]"
+    },
+    "correctAnswer": "E"
+  },
+  {
+    "id": "q15",
+    "description": "Söz uçar, yazı kalır.",
+    "question": "[b]Bu atasözünde vurgulanmak istenen ana düşünce nedir?[/b]",
+    "options": {
+      "A": "[bu]Konuşmak[/bu] yazmaktan kolaydır",
+      "B": "Yazılı belgeler [bu]kalıcıdır[/bu], sözlü ifadeler [bu]unutulur[/bu]",
+      "C": "[bu]Yazmak[/bu] zor bir iştir",
+      "D": "Konuşmak daha [bu]etkilidir[/bu]",
+      "E": "[bu]Her şey[/bu] yazılmalıdır"
+    },
+    "correctAnswer": "B"
+  }
+]
