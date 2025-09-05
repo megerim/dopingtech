@@ -76,7 +76,7 @@
       font-weight: 700;
     }
     
-    .underline.bold {
+    .both {
       font-weight: 700;
       text-decoration: underline;
     }
@@ -92,7 +92,7 @@
       
       .underline,
       .bold,
-      .underline.bold {
+      .both {
         color: inherit;
       }
     }

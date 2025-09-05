@@ -65,6 +65,7 @@ const OptionsComponent = () => {
                           className: {
                             underline: styles.underline,
                             bold: styles.bold,
+                            both: styles.both,
                           },
                         });
                       } else {
