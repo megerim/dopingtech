@@ -1,5 +1,8 @@
 .testPageContainer {
   padding: 2rem;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
@@ -116,6 +119,8 @@
   display: flex;
   gap: 1.5rem;
   align-items: stretch;
+  flex: 1;
+  min-height: 0;
 }
 
 .questionArea {
@@ -126,6 +131,8 @@
 
 .opticArea {
   flex-shrink: 0;
+  display: flex;
+  min-height: 0;
 }
 
 .navigationButtons {
