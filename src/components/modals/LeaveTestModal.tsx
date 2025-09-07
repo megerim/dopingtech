@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { Modal } from './common/Modal';
-import styles from '../styles/modules/LeaveTestModal.module.scss';
+import { Modal } from './Modal';
+import styles from '../../styles/modules/LeaveTestModal.module.scss';
 
 interface LeaveTestModalProps {
   isOpen: boolean;

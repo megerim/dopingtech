@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { Modal } from './common/Modal';
-import styles from '../styles/modules/FinishTestModal.module.scss';
+import { Modal } from './Modal';
+import styles from '../../styles/modules/FinishTestModal.module.scss';
 
 interface FinishTestModalProps {
   isOpen: boolean;

@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { Modal } from './common/Modal';
-import styles from '../styles/modules/TestResultsModal.module.scss';
+import { Modal } from './Modal';
+import styles from '../../styles/modules/TestResultsModal.module.scss';
 
 interface TestStats {
   correct: number;
