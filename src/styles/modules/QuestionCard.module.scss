@@ -8,6 +8,14 @@
   padding: 0; 
 }
 
+@media (max-width: 768px) {
+  .questionCard {
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+}
+
 .headerSection {
   position: absolute;
   left: 20px;

@@ -9,6 +9,12 @@
   box-shadow: 4px 4px 16px rgba(112, 144, 176, 0.1);
 }
 
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}
+
 .logo {
   margin: 39px 0 0 29px;
   width: 44px;

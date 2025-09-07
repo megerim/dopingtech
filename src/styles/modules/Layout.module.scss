@@ -7,5 +7,10 @@
 .mainContent {
   flex-grow: 1;
   margin-left: 97px;
+}
 
+@media (max-width: 768px) {
+  .mainContent {
+    margin-left: 0;
+  }
 }
