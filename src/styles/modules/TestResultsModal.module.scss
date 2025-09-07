@@ -1,0 +1,173 @@
+.container {
+  width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.iconWrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+.iconText {
+  color: #FFFFFF;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 36px;
+  color: #2C3E50;
+  margin: 0 0 0.5rem 0;
+  padding: 0;
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #6B7280;
+  max-width: 360px;
+  margin: 0 0 2rem 0;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #F8FAFB 0%, #F3F4F6 100%);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.statLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6B7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.statValue {
+  font-size: 28px;
+  font-weight: 800;
+  color: #2C3E50;
+  line-height: 1;
+  
+  &.net {
+    color: #3B82F6;
+    font-size: 32px;
+  }
+  
+  &.correct {
+    color: #10B981;
+  }
+  
+  &.wrong {
+    color: #EF4444;
+  }
+  
+  &.empty {
+    color: #F59E0B;
+  }
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.button {
+  min-width: 160px;
+  height: 56px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: inherit;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.primaryButton {
+  background: linear-gradient(180deg, #10B981 0%, #059669 100%);
+  color: #FFFFFF;
+
+  &:hover {
+    background: linear-gradient(180deg, #34D399 0%, #10B981 100%);
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: calc(100vw - 3rem);
+    min-width: 280px;
+  }
+
+  .title {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1rem;
+  }
+
+  .statLabel {
+    font-size: 11px;
+  }
+
+  .statValue {
+    font-size: 24px;
+    
+    &.net {
+      font-size: 28px;
+    }
+  }
+
+  .subtitle {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .button {
+    height: 48px;
+    font-size: 14px;
+    min-width: 140px;
+  }
+}

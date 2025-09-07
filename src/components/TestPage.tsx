@@ -6,11 +6,15 @@ import styles from '../styles/modules/TestPage.module.scss';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { loadTestStart, goToNextQuestion, goToPreviousQuestion, finishTest, toggleShowAnswers } from '../store/slices/testSlice';
 import { LeaveTestModal } from './LeaveTestModal';
+import { FinishTestModal } from './FinishTestModal';
+import { TestResultsModal } from './TestResultsModal';
 
 export const TestPage = () => {
   const dispatch = useAppDispatch();
-  const { isFinished, showAnswers } = useAppSelector((s) => s.test);
+  const { isFinished, showAnswers, questions, userAnswers } = useAppSelector((s) => s.test);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFinishModalOpen, setIsFinishModalOpen] = useState(false);
+  const [isResultsModalOpen, setIsResultsModalOpen] = useState(false);
 
   useEffect(() => {
     dispatch(loadTestStart());
@@ -20,12 +24,49 @@ export const TestPage = () => {
     dispatch(finishTest());
     setIsModalOpen(false);
   };
+
+  const handleConfirmFinish = () => {
+    const testStats = calculateStats();
+    console.log('Test Statistics:', {
+      net: testStats.net,
+      correct: testStats.correct,
+      wrong: testStats.wrong,
+      empty: testStats.empty,
+      totalQuestions: questions.length
+    });
+    dispatch(finishTest());
+    setIsFinishModalOpen(false);
+    setIsResultsModalOpen(true);
+  };
+
+  // Test score calculation
+  const calculateStats = () => {
+    let correct = 0;
+    let wrong = 0;
+    let empty = 0;
+
+    questions.forEach((question) => {
+      const userAnswer = userAnswers[question.id];
+      if (!userAnswer) {
+        empty++;
+      } else if (userAnswer === question.correctAnswer) {
+        correct++;
+      } else {
+        wrong++;
+      }
+    });
+
+    const net = correct - Math.floor(wrong / 3);
+    return { correct, wrong, empty, net };
+  };
+
+  const stats = calculateStats();
   return (
     <Layout>
       <div className={styles.testPageContainer}>
         <header className={styles.header}>
           <div className={styles.headerLeft}>
-            <button className={styles.backButton}>
+            <button className={styles.backButton} onClick={() => setIsModalOpen(true)}>
               <img src="/dh/arrow-left.svg" alt="Back" />
             </button>
             <h1 className={styles.pageTitle}>Konu Tarama Testi #1</h1>
@@ -45,7 +86,7 @@ export const TestPage = () => {
                 <span className={styles.switch__slider} />
               </button>
             </div>
-            <button className={styles.endTestButton} onClick={() => isFinished ? null : setIsModalOpen(true)}>
+            <button className={styles.endTestButton} onClick={() => isFinished ? null : setIsFinishModalOpen(true)}>
               <div className={styles.endTestButton__icon}>
                 <img src="/dh/shutdown.png" alt="End Test" />
               </div>
@@ -77,6 +118,17 @@ export const TestPage = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onConfirm={handleConfirmLeave}
+      />
+      <FinishTestModal
+        isOpen={isFinishModalOpen}
+        onClose={() => setIsFinishModalOpen(false)}
+        onConfirm={handleConfirmFinish}
+        emptyCount={stats.empty}
+      />
+      <TestResultsModal
+        isOpen={isResultsModalOpen}
+        onClose={() => setIsResultsModalOpen(false)}
+        stats={stats}
       />
     </Layout>
   );
