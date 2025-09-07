@@ -2,12 +2,15 @@ import { useEffect, useState } from 'react';
 import { Layout } from './layout/Layout';
 import { QuestionCard } from './question/QuestionCard';
 import { Optic } from './optic/Optic';
+import { Timer } from './mobile/Timer';
+import { ProgressBar } from './mobile/ProgressBar';
+import { MobileMenuModal } from './modals/MobileMenuModal';
 import styles from '../styles/modules/TestPage.module.scss';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { loadTestStart, goToNextQuestion, goToPreviousQuestion, finishTest, toggleShowAnswers } from '../store/slices/testSlice';
-import { LeaveTestModal } from './LeaveTestModal';
-import { FinishTestModal } from './FinishTestModal';
-import { TestResultsModal } from './TestResultsModal';
+import { LeaveTestModal } from './modals/LeaveTestModal';
+import { FinishTestModal } from './modals/FinishTestModal';
+import { TestResultsModal } from './modals/TestResultsModal';
 
 export const TestPage = () => {
   const dispatch = useAppDispatch();
@@ -15,6 +18,7 @@ export const TestPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFinishModalOpen, setIsFinishModalOpen] = useState(false);
   const [isResultsModalOpen, setIsResultsModalOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     dispatch(loadTestStart());
@@ -65,33 +69,50 @@ export const TestPage = () => {
     <Layout>
       <div className={styles.testPageContainer}>
         <header className={styles.header}>
-          <div className={styles.headerLeft}>
-            <button className={styles.backButton} onClick={() => setIsModalOpen(true)}>
-              <img src="/dh/arrow-left.svg" alt="Back" />
-            </button>
-            <h1 className={styles.pageTitle}>Konu Tarama Testi #1</h1>
-          </div>
+          <div className={styles.desktopHeader}>
+            <div className={styles.headerLeft}>
+              <button className={styles.backButton} onClick={() => setIsModalOpen(true)}>
+                <img src="/dh/arrow-left.svg" alt="Back" />
+              </button>
+              <h1 className={styles.pageTitle}>Konu Tarama Testi #1</h1>
+            </div>
 
-          <div className={styles.headerRight}>
-            <div className={styles.toggleContainer}>
-              <span>Cevapları Göster</span>
-              <button
-                className={`${styles.switch} ${showAnswers ? styles['switch--on'] : ''}`}
-                onClick={() => dispatch(toggleShowAnswers())}
-                disabled={!isFinished}
-                aria-pressed={showAnswers}
-                aria-label="Cevapları Göster"
-                title={!isFinished ? 'Testi bitirdikten sonra kullanılabilir' : 'Cevapları göster'}
-              >
-                <span className={styles.switch__slider} />
+            <div className={styles.headerRight}>
+              <div className={styles.toggleContainer}>
+                <span>Cevapları Göster</span>
+                <button
+                  className={`${styles.switch} ${showAnswers ? styles['switch--on'] : ''}`}
+                  onClick={() => dispatch(toggleShowAnswers())}
+                  disabled={!isFinished}
+                  aria-pressed={showAnswers}
+                  aria-label="Cevapları Göster"
+                  title={!isFinished ? 'Testi bitirdikten sonra kullanılabilir' : 'Cevapları göster'}
+                >
+                  <span className={styles.switch__slider} />
+                </button>
+              </div>
+              <button className={styles.endTestButton} onClick={() => isFinished ? null : setIsFinishModalOpen(true)}>
+                <div className={styles.endTestButton__icon}>
+                  <img src="/dh/shutdown.png" alt="End Test" />
+                </div>
+                <span>{isFinished ? 'Test Tamamlandı' : 'Testi Bitir'}</span>
               </button>
             </div>
-            <button className={styles.endTestButton} onClick={() => isFinished ? null : setIsFinishModalOpen(true)}>
-              <div className={styles.endTestButton__icon}>
-                <img src="/dh/shutdown.png" alt="End Test" />
-              </div>
-              <span>{isFinished ? 'Test Tamamlandı' : 'Testi Bitir'}</span>
-            </button>
+          </div>
+
+          <div className={styles.mobileHeader}>
+            <div className={styles.mobileTopRow}>
+              <button className={styles.mobileBackButton} onClick={() => setIsModalOpen(true)}>
+                <img src="/dh/arrow-left.svg" alt="Back" />
+              </button>
+              <Timer />
+              <button className={styles.mobileMenuButton} onClick={() => setIsMobileMenuOpen(true)}>
+                <span className={styles.threeDots}></span>
+                <span className={styles.threeDots}></span>
+                <span className={styles.threeDots}></span>
+              </button>
+            </div>
+            <ProgressBar />
           </div>
         </header>
 
@@ -129,6 +150,12 @@ export const TestPage = () => {
         isOpen={isResultsModalOpen}
         onClose={() => setIsResultsModalOpen(false)}
         stats={stats}
+      />
+      <MobileMenuModal
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+        onFinishTest={() => setIsFinishModalOpen(true)}
+        onShowAnswerSheet={() => {}}
       />
     </Layout>
   );

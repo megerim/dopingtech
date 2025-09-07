@@ -33,7 +33,7 @@ export const QuestionCard = () => {
             <img src="/dh/zoom-out.svg" alt="Zoom out" />
           </button>
           <button
-            className={`${styles.actionButton} ${styles['actionButton--danger']}`}
+            className={`${styles.actionButton} ${styles.actionButtonDanger}`}
           >
             <img src="/dh/alert-circle.svg" alt="Alert" />
           </button>

@@ -4,6 +4,12 @@
   gap: 8px;
 }
 
+@media (max-width: 768px) {
+  .answerOptions {
+    gap: 10px;
+  }
+}
+
 .answerItem {
   position: relative;
   width: 100%;
@@ -162,4 +168,102 @@
   overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px);
   white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .answerItem {
+    min-height: 78px;
+    
+    &__background {
+      border-radius: 10px;
+      
+      &--default {
+        background: #346796;
+        opacity: 0.6;
+        border: none;
+      }
+      
+      &--selected {
+        background: #3C79B0;
+        border: none;
+        opacity: 1;
+      }
+      
+      &--correct {
+        background: rgba(26, 188, 156, 0.8);
+        border: none;
+        opacity: 1;
+      }
+      
+      &--incorrect {
+        background: #F85050;
+        opacity: 1;
+        border: none;
+      }
+    }
+    
+    &__icon {
+      top: 27px;
+      left: 16px;
+    }
+    
+    &__text {
+      top: 15px;
+      padding-right: 20px;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      
+      .text--default {
+        color: #BCDCFA;
+        font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+      }
+      
+      .text--correct {
+        color: #FFFFFF;
+        font-weight: 600;
+      }
+      
+      .text--incorrect {
+        color: #FFFFFF;
+        font-weight: 500;
+      }
+    }
+  }
+  
+  .checkbox {
+    border: 1.5px solid #BCDCFA;
+    
+    &__dot {
+      background: #BCDCFA;
+    }
+  }
+  
+  .answerItem__background--selected ~ .answerItem__icon .checkbox {
+    border-color: #BCDCFA;
+    
+    .checkbox__dot {
+      background: #BCDCFA;
+      opacity: 1;
+    }
+  }
+  
+  .answerItem__background--correct ~ .answerItem__icon .checkbox {
+    border-color: #FFFFFF;
+    
+    .checkbox__dot {
+      background: #FFFFFF;
+    }
+  }
+  
+  .answerItem__background--incorrect ~ .answerItem__icon .checkbox {
+    border-color: #FFFFFF;
+    
+    .checkbox__dot {
+      background: #FFFFFF;
+    }
+  }
 }
