@@ -8,9 +8,6 @@ export const Optic = () => {
   const { questions, userAnswers, isFinished, currentQuestionIndex, showAnswers } = useAppSelector((s) => s.test);
   const soruSayisi = questions.length || 15;
   const answeredCount = questions.filter((q) => userAnswers[q.id]).length;
-  const correctCount = questions.filter(
-    (q) => q.correctAnswer && userAnswers[q.id] === q.correctAnswer
-  ).length;
 
   return (
     <div className={styles.card}>
@@ -22,7 +19,7 @@ export const Optic = () => {
         />
         <div className={styles.header__content}>
           <h2 className={styles.header__title}>Türkçe</h2>
-          <p className={styles.header__subtitle}>{`${answeredCount}/${soruSayisi} Soru • ${correctCount} Doğru`}</p>
+          <p className={styles.header__subtitle}>{`${answeredCount}/${soruSayisi} Soru`}</p>
         </div>
       </header>
 
