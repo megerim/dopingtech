@@ -8,12 +8,13 @@ function fetchQuestionsApi(): Promise<Question[]> {
   });
 }
 
-function* loadTestWorker(): Generator<any, any, any> {
+function* loadTestWorker(): Generator<any, void, Question[]> {
   try {
     const questions: Question[] = yield call(fetchQuestionsApi);
     yield put(loadTestSuccess(questions));
-  } catch (err: any) {
-    yield put(loadTestFailure(err?.message ?? 'Failed to load questions'));
+  } catch (err: unknown) {
+    const errorMessage = err instanceof Error ? err.message : 'Failed to load questions';
+    yield put(loadTestFailure(errorMessage));
   }
 }
 
