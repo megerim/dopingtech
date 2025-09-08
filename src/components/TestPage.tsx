@@ -13,14 +13,13 @@ import { LeaveTestModal } from './modals/LeaveTestModal';
 import { FinishTestModal } from './modals/FinishTestModal';
 import { TestResultsModal } from './modals/TestResultsModal';
 
+type ModalType = 'leave' | 'finish' | 'results' | 'mobileMenu' | null;
+
 export const TestPage = () => {
   const dispatch = useAppDispatch();
   const { isFinished, showAnswers } = useAppSelector((s) => s.test);
   const stats = useAppSelector(selectTestStats);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isFinishModalOpen, setIsFinishModalOpen] = useState(false);
-  const [isResultsModalOpen, setIsResultsModalOpen] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeModal, setActiveModal] = useState<ModalType>(null);
 
   useEffect(() => {
     dispatch(loadTestStart());
@@ -28,7 +27,7 @@ export const TestPage = () => {
 
   const handleConfirmLeave = useCallback(() => {
     dispatch(finishTest());
-    setIsModalOpen(false);
+    setActiveModal(null);
   }, [dispatch]);
 
   const handleConfirmFinish = useCallback(() => {
@@ -39,8 +38,7 @@ export const TestPage = () => {
       empty: stats.empty
     });
     dispatch(finishTest());
-    setIsFinishModalOpen(false);
-    setIsResultsModalOpen(true);
+    setActiveModal('results');
   }, [dispatch, stats]);
 
   return (
@@ -50,7 +48,7 @@ export const TestPage = () => {
         <header className={styles.header}>
           <div className={styles.desktopHeader}>
             <div className={styles.headerLeft}>
-              <button className={styles.backButton} onClick={() => setIsModalOpen(true)}>
+              <button className={styles.backButton} onClick={() => setActiveModal('leave')}>
                 <img src="/dh/arrow-left.svg" alt="Back" />
               </button>
               <h1 className={styles.pageTitle}>Konu Tarama Testi #1</h1>
@@ -70,7 +68,7 @@ export const TestPage = () => {
                   <span className={styles.switch__slider} />
                 </button>
               </div>
-              <button className={styles.endTestButton} onClick={() => isFinished ? null : setIsFinishModalOpen(true)}>
+              <button className={styles.endTestButton} onClick={() => isFinished ? null : setActiveModal('finish')}>
                 <div className={styles.endTestButton__icon}>
                   <img src="/dh/shutdown.png" alt="End Test" />
                 </div>
@@ -81,11 +79,11 @@ export const TestPage = () => {
 
           <div className={styles.mobileHeader}>
             <div className={styles.mobileTopRow}>
-              <button className={styles.mobileBackButton} onClick={() => setIsModalOpen(true)}>
+              <button className={styles.mobileBackButton} onClick={() => setActiveModal('leave')}>
                 <img src="/dh/arrow-left.svg" alt="Back" />
               </button>
               <Timer />
-              <button className={styles.mobileMenuButton} onClick={() => setIsMobileMenuOpen(true)}>
+              <button className={styles.mobileMenuButton} onClick={() => setActiveModal('mobileMenu')}>
                 <span className={styles.threeDots}></span>
                 <span className={styles.threeDots}></span>
                 <span className={styles.threeDots}></span>
@@ -115,25 +113,25 @@ export const TestPage = () => {
         </div>
       </div>
       <LeaveTestModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        isOpen={activeModal === 'leave'}
+        onClose={() => setActiveModal(null)}
         onConfirm={handleConfirmLeave}
       />
       <FinishTestModal
-        isOpen={isFinishModalOpen}
-        onClose={() => setIsFinishModalOpen(false)}
+        isOpen={activeModal === 'finish'}
+        onClose={() => setActiveModal(null)}
         onConfirm={handleConfirmFinish}
         emptyCount={stats.empty}
       />
       <TestResultsModal
-        isOpen={isResultsModalOpen}
-        onClose={() => setIsResultsModalOpen(false)}
+        isOpen={activeModal === 'results'}
+        onClose={() => setActiveModal(null)}
         stats={stats}
       />
       <MobileMenuModal
-        isOpen={isMobileMenuOpen}
-        onClose={() => setIsMobileMenuOpen(false)}
-        onFinishTest={() => setIsFinishModalOpen(true)}
+        isOpen={activeModal === 'mobileMenu'}
+        onClose={() => setActiveModal(null)}
+        onFinishTest={() => setActiveModal('finish')}
         onShowAnswerSheet={() => {}}
       />
     </Layout>
