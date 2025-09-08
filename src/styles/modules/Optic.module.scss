@@ -1,9 +1,12 @@
+@import '../variables';
+@import '../mixins';
+
 .card {
   width: 352px;
   height: 100%;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0px 12px 50px rgba(0, 0, 0, 0.04);
+  background-color: var(--card-bg);
+  border-radius: $border-radius-md;
+  box-shadow: $box-shadow;
   border: 0;
   position: relative;
   overflow: hidden;
@@ -16,7 +19,7 @@
   align-items: center;
   gap: 12px;
   padding: 20px;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid $border-color;
 
   &__icon {
     width: 48px;
@@ -30,7 +33,7 @@
 
   &__title {
     font-weight: 600;
-    color: #2c3e50;
+    color: $text-primary;
     font-size: 18px;
   }
 
@@ -63,7 +66,7 @@
 
   &__content {
     height: 60px;
-    border-radius: 10px;
+    border-radius: $border-radius-md;
     position: relative;
   }
 
@@ -73,8 +76,8 @@
     height: 100%;
     top: 0;
     left: 0;
-    background-color: #03a9f1;
-    border-radius: 10px;
+    background-color: $info-alt;
+    border-radius: $border-radius-md;
 
     &--light { opacity: 0.07; }
     &--medium { opacity: 0.1; }
@@ -92,7 +95,7 @@
 
   &__label {
     font-weight: 600;
-    color: #2c3e50;
+    color: $text-primary;
     font-size: 14px;
   }
 
@@ -110,9 +113,7 @@
   height: 40px;
   min-width: 40px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
   font-weight: 700;
   font-size: 16px;
   cursor: pointer;
@@ -123,25 +124,25 @@
 
   &--default {
     background-color: #edf9fe;
-    border-color: #4993b1;
-    color: #4993b1;
+    border-color: $text-link;
+    color: $text-link;
   }
 
   &--selected {
-    background-color: #03a9f1;
-    color: white;
-    border-color: #03a9f1;
+    background-color: $info-alt;
+    color: $text-inverted;
+    border-color: $info-alt;
   }
 
   &--correct {
-    background-color: #4caf50;
-    color: white;
-    border-color: #4caf50;
+    background-color: $success-alt;
+    color: $text-inverted;
+    border-color: $success-alt;
   }
 
   &--incorrect {
-    background-color: #f44336;
-    color: white;
-    border-color: #f44336;
+    background-color: $error-alt;
+    color: $text-inverted;
+    border-color: $error-alt;
   }
 }

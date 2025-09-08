@@ -1,15 +1,18 @@
+@import '../variables';
+@import '../mixins';
+
 .sidebar {
-  width: 97px;
+  width: $sidebar-width;
   height: 100vh;
   position: fixed;
   left: 0;
   top: 0;
-  background: #fff;
-  border-right: 1px solid #F0F1F3;
+  background: var(--bg-color);
+  border-right: 1px solid $border-color;
   box-shadow: 4px 4px 16px rgba(112, 144, 176, 0.1);
 }
 
-@media (max-width: 768px) {
+@include for-tablet-portrait-up {
   .sidebar {
     display: none;
   }
@@ -37,16 +40,14 @@
 .navIcon {
   width: 60px;
   height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: $border-radius-md;
   transition: background 0.2s;
   position: relative;
   
   &:hover {
-    background: #F3F7F9;
+    background: $bg-hover;
   }
   
   // Inner icon button
@@ -68,31 +69,31 @@
   
   // Icon backgrounds
   &--grid::after {
-    background: linear-gradient(180deg, #899EF3 0%, #6980DA 100%);
+    @include linear-gradient(180deg, $accent-purple 0%, #6980DA 100%);
   }
   
   &--book::after {
-    background: linear-gradient(180deg, #EEA75D 0%, #D78C3F 100%);
+    @include linear-gradient(180deg, $accent-orange 0%, #D78C3F 100%);
   }
   
   &--list::after {
-    background: linear-gradient(180deg, #FF73C7 0%, #F75EBA 100%);
+    @include linear-gradient(180deg, $accent-pink 0%, #F75EBA 100%);
   }
   
   &--check::after {
-    background: linear-gradient(180deg, #3CD88D 0%, #4DBE87 100%);
+    @include linear-gradient(180deg, #3CD88D 0%, #4DBE87 100%);
   }
   
   &--inspect::after {
-    background: linear-gradient(180deg, #6CCCEA 0%, #55B4D2 100%);
+    @include linear-gradient(180deg, $accent-cyan 0%, #55B4D2 100%);
   }
   
   &--activity::after {
-    background: linear-gradient(180deg, #FFD873 0%, #F2C44D 100%);
+    background: $gradient-yellow;
   }
   
   &--special::after {
-    background: linear-gradient(180deg, #FFDDE1 -5%, #F3AFB8 96.67%);
+    @include linear-gradient(180deg, #FFDDE1 -5%, #F3AFB8 96.67%);
     outline: 1px solid #F8C1C8;
     outline-offset: 2px;
   }
@@ -113,16 +114,14 @@
 .appIcon {
   width: 60px;
   height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: $border-radius-md;
   transition: background 0.2s;
   position: relative;
   
   &:hover {
-    background: #F3F7F9;
+    background: $bg-hover;
   }
   
   // Inner app icon
@@ -142,7 +141,7 @@
   }
   
   &--cozucu::after {
-    background: linear-gradient(180deg, #D9E3EB 0%, #EEF2F3 100%);
+    @include linear-gradient(180deg, #D9E3EB 0%, #EEF2F3 100%);
   }
   
   &--simdi::after {
@@ -164,16 +163,14 @@
 .feedbackIcon {
   width: 60px;
   height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: $border-radius-md;
   transition: background 0.2s;
   position: relative;
   
   &:hover {
-    background: #F3F7F9;
+    background: $bg-hover;
   }
   
   // Inner feedback icon
@@ -182,7 +179,7 @@
     width: 30px;
     height: 30px;
     border-radius: 9px;
-    background: linear-gradient(180deg, #E7843C 0%, #E7983C 100%);
+    @include linear-gradient(180deg, #E7843C 0%, #E7983C 100%);
     position: absolute;
   }
   

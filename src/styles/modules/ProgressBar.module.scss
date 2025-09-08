@@ -1,3 +1,6 @@
+@import '../variables';
+@import '../mixins';
+
 .progressContainer {
   display: flex;
   flex-direction: column;
@@ -16,12 +19,12 @@
 }
 
 .testTitle {
-  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  @include font-nunito;
   font-style: normal;
   font-weight: 600;
   font-size: 13px;
   line-height: 18px;
-  color: #DCF5FF;
+  color: $text-light;
   max-width: calc(100% - 50px);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -31,12 +34,12 @@
 }
 
 .questionCount {
-  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  @include font-nunito;
   font-style: normal;
   font-weight: 600;
   font-size: 13px;
   line-height: 18px;
-  color: #FDD368;
+  color: $accent-yellow;
   text-align: right;
   display: flex;
   align-items: flex-end;
@@ -48,7 +51,7 @@
   width: calc(100% - 20px);
   margin: 0 auto;
   height: 5px;
-  background: #0C3E62;
+  background: $bg-dark-blue;
   border-radius: 100px;
   overflow: visible;
 }
@@ -58,7 +61,7 @@
   top: 0;
   left: 0;
   height: 100%;
-  background: linear-gradient(180deg, #FFD873 0%, #F2C44D 100%);
+  background: $gradient-yellow;
   border-radius: 100px;
   transition: width 0.3s ease;
   z-index: 1;

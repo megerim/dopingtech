@@ -1,6 +1,9 @@
+@import '../variables';
+@import '../mixins';
+
 .layout {
   display: flex;
-  background-color: var(--bg-color, #f9f9f9);
+  background-color: var(--bg-color, $bg-main);
   min-height: 100vh;
   transition: background-color 0.3s ease;
 
@@ -11,11 +14,11 @@
 
 .mainContent {
   flex-grow: 1;
-  margin-left: 97px;
-  color: var(--text-color, #2c3e50);
+  margin-left: $sidebar-width;
+  color: var(--text-color, $text-primary);
 }
 
-@media (max-width: 768px) {
+@include for-tablet-portrait-up {
   .mainContent {
     margin-left: 0;
   }

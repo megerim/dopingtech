@@ -1,3 +1,6 @@
+@import '../variables';
+@import '../mixins';
+
 .testPageContainer {
   padding: 1rem 2rem;
   height: 90vh;
@@ -35,11 +38,11 @@
 }
 
 .pageTitle {
-  font-family: 'Manrope', Helvetica, sans-serif;
+  @include font-manrope;
   font-weight: 700;
   font-size: 24px;
   margin: 0;
-  color: #2c3e50;
+  color: $text-primary;
 }
 
 .headerRight {
@@ -52,8 +55,8 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  background-color: #ededed;
-  border-radius: 10px;
+  background-color: var(--toggle-bg);
+  border-radius: $border-radius-md;
   padding: 14px 20px;
 
   span {
@@ -66,7 +69,7 @@
   position: relative;
   width: 48px;
   height: 28px;
-  background-color: #ffffff;
+  background-color: $text-inverted;
   border: 2px solid #e0e0e0;
   border-radius: 14px;
   cursor: pointer;
@@ -86,20 +89,20 @@
   }
 
   &--on {
-    background-color: #4caf50;
-    border-color: #4caf50;
+    background-color: $success-alt;
+    border-color: $success-alt;
 
     .switch__slider {
       transform: translateX(20px);
-      background-color: #ffffff;
+      background-color: $text-inverted;
     }
   }
 }
 
 .endTestButton {
-  background-color: #f7d54c;
-  color: #2c3e50;
-  border-radius: 10px;
+  background-color: var(--end-test-bg);
+  color: $text-primary;
+  border-radius: $border-radius-md;
   padding: 7px 12px;
   display: flex;
   align-items: center;
@@ -112,11 +115,9 @@
   &__icon {
     width: 36px;
     height: 36px;
-    background-color: #f85050;
+    background-color: var(--danger-bg);
     border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
   }
 }
 
@@ -144,14 +145,12 @@
 }
 
 .navButton {
-  background-color: #ededed;
-  color: #2c3e50;
-  border-radius: 10px;
+  background-color: var(--nav-button-bg);
+  color: var(--nav-button-text);
+  border-radius: $border-radius-md;
   width: 140px;
   height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
   gap: 8px;
   border: none;
   cursor: pointer;
@@ -175,12 +174,10 @@
 .mobileBackButton {
   width: 40px;
   height: 40px;
-  background: rgba(220, 245, 255, 0.08);
+  background: $mobile-card-bg;
   border: none;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border-radius: $border-radius-md;
+  @include flex-center;
   cursor: pointer;
   box-shadow: 0px 10px 30px rgba(112, 144, 176, 0.1);
 
@@ -194,9 +191,9 @@
 .mobileMenuButton {
   width: 40px;
   height: 40px;
-  background: rgba(220, 245, 255, 0.08);
+  background: $mobile-card-bg;
   border: none;
-  border-radius: 10px;
+  border-radius: $border-radius-md;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -209,12 +206,12 @@
 .threeDots {
   width: 4px;
   height: 4px;
-  background: #DCF5FF;
+  background: $text-light;
   border-radius: 50%;
 }
 
 
-@media (max-width: 768px) {
+@include for-tablet-portrait-up {
   .testPageContainer {
     padding: 0;
     height: 100vh;
@@ -227,8 +224,8 @@
     left: 0;
     right: 0;
     z-index: 100;
-    background: linear-gradient(0deg, #305B83, #305B83);
-    box-shadow: 0px 12px 50px rgba(0, 0, 0, 0.04);
+    background: var(--header-bg);
+    box-shadow: $box-shadow;
     height: 139px;
   }
 
@@ -263,7 +260,7 @@
     left: 0;
     right: 0;
     height: 74px;
-    background: rgba(26, 56, 85, 0.7);
+    background: $bg-mobile-nav;
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
     padding: 0 10px;
@@ -275,14 +272,14 @@
 
   .navButton {
     height: 44px;
-    border-radius: 10px;
+    border-radius: $border-radius-md;
     font-weight: 700;
     font-size: 14px;
-    color: #F8FAFC;
+    color: $mobile-text-light;
     
     &:first-child {
       width: 135px;
-      background: linear-gradient(180deg, #03A9F1 0%, #1A85B4 100%);
+      background: var(--gradient-blue);
       
       img {
         filter: brightness(0) invert(1);
@@ -291,7 +288,7 @@
     
     &:last-child {
       width: 140px;
-      background: linear-gradient(180deg, #1ABC9C 0%, #16A085 100%);
+      background: var(--gradient-green);
       
       img {
         filter: brightness(0) invert(1);

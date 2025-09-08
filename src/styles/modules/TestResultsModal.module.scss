@@ -1,26 +1,24 @@
+@import '../variables';
+@import '../mixins';
+
 .container {
   width: 440px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  @include flex-column-center;
+  @include font-manrope;
 }
 
 .iconWrapper {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: $gradient-success;
+  @include flex-center;
   margin-bottom: 1rem;
   box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
 }
 
 .iconText {
-  color: #FFFFFF;
+  color: $text-inverted;
   font-size: 32px;
   font-weight: 700;
   line-height: 1;
@@ -30,7 +28,7 @@
   font-weight: 800;
   font-size: 28px;
   line-height: 36px;
-  color: #2C3E50;
+  color: $text-primary;
   margin: 0 0 0.5rem 0;
   padding: 0;
 }
@@ -39,7 +37,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: #6B7280;
+  color: $text-secondary;
   max-width: 360px;
   margin: 0 0 2rem 0;
 }
@@ -57,16 +55,14 @@
 }
 
 .statItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flex-column-center;
   gap: 0.5rem;
 }
 
 .statLabel {
   font-size: 12px;
   font-weight: 600;
-  color: #6B7280;
+  color: $text-secondary;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -74,24 +70,24 @@
 .statValue {
   font-size: 28px;
   font-weight: 800;
-  color: #2C3E50;
+  color: $text-primary;
   line-height: 1;
   
   &.net {
-    color: #3B82F6;
+    color: $info;
     font-size: 32px;
   }
   
   &.correct {
-    color: #10B981;
+    color: $success;
   }
   
   &.wrong {
-    color: #EF4444;
+    color: $error;
   }
   
   &.empty {
-    color: #F59E0B;
+    color: $warning;
   }
 }
 
@@ -103,36 +99,20 @@
 
 .button {
   min-width: 160px;
-  height: 56px;
-  border-radius: 10px;
-  border: none;
-  font-weight: 800;
-  font-size: 16px;
-  line-height: 24px;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  font-family: inherit;
-
-  &:hover {
-    transform: translateY(-1px);
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
+  @include button-base;
 }
 
 .primaryButton {
-  background: linear-gradient(180deg, #10B981 0%, #059669 100%);
-  color: #FFFFFF;
+  background: $gradient-success;
+  color: $text-inverted;
 
   &:hover {
-    background: linear-gradient(180deg, #34D399 0%, #10B981 100%);
+    background: linear-gradient(180deg, #34D399 0%, $success 100%);
     box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
   }
 }
 
-@media (max-width: 480px) {
+@include for-phone-only {
   .container {
     width: calc(100vw - 3rem);
     min-width: 280px;

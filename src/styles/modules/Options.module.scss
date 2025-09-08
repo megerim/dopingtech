@@ -1,10 +1,13 @@
+@import '../variables';
+@import '../mixins';
+
 .answerOptions {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-@media (max-width: 768px) {
+@include for-tablet-portrait-up {
   .answerOptions {
     gap: 10px;
   }
@@ -23,7 +26,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    border-radius: 10px;
+    border-radius: $border-radius-md;
     transition: all 0.2s ease;
 
     &--default {
@@ -33,17 +36,17 @@
 
     &--selected {
       background-color: rgba(44, 62, 80, 0.1);
-      border: 1px solid #2C3E50;
+      border: 1px solid $primary-dark;
     }
 
     &--correct {
       background-color: rgba(26, 188, 156, 0.05);
-      border: 2px solid #1ABC9C;
+      border: 2px solid $accent-green;
       opacity: 1;
     }
 
     &--incorrect {
-      background-color: #F85050;
+      background-color: $accent-red;
       opacity: 1;
     }
   }
@@ -54,9 +57,7 @@
     height: 24px;
     left: 16px;
     top: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
   }
 
   &__text {
@@ -70,7 +71,7 @@
     line-height: 24px;
 
     .text--default {
-      color: #2C3E50;
+      color: $text-primary;
       font-weight: 400;
     }
 
@@ -88,12 +89,12 @@
     }
 
     .text--correct {
-      color: #1ABC9C;
+      color: $text-success;
       font-weight: 700;
     }
 
     .text--incorrect {
-      color: #FFFFFF;
+      color: $text-inverted;
       font-weight: 500;
       
       .underline,
@@ -111,13 +112,12 @@
 
 /* circular checkbox */
 .checkbox {
+  @include flex-center;
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  border: 1.5px solid #2C3E50;
+  border: 1.5px solid $primary-dark;
   box-sizing: border-box;
   padding: 3px;
   background-color: transparent;
@@ -128,7 +128,7 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background-color: #2C3E50;
+  background-color: $primary-dark;
   opacity: 0;
   transition: opacity 0.2s ease;
 }
@@ -144,20 +144,20 @@
 
 /* Change checkbox colors based on answer state */
 .answerItem__background--correct ~ .answerItem__icon .checkbox {
-  border-color: #1ABC9C;
+  border-color: $accent-green;
 }
 
 .answerItem__background--correct ~ .answerItem__icon .checkbox__dot {
-  background-color: #1ABC9C;
+  background-color: $accent-green;
   opacity: 0;
 }
 
 .answerItem__background--incorrect ~ .answerItem__icon .checkbox {
-  border-color: #FFFFFF;
+  border-color: $text-inverted;
 }
 
 .answerItem__background--incorrect ~ .answerItem__icon .checkbox__dot {
-  background-color: #FFFFFF;
+  background-color: $text-inverted;
 }
 
 /* visually hidden input for accessibility */
@@ -170,21 +170,21 @@
   white-space: nowrap;
 }
 
-@media (max-width: 768px) {
+@include for-tablet-portrait-up {
   .answerItem {
     min-height: 78px;
     
     &__background {
-      border-radius: 10px;
+      border-radius: $border-radius-md;
       
       &--default {
-        background: #346796;
+        background: $primary-light;
         opacity: 0.6;
         border: none;
       }
       
       &--selected {
-        background: #3C79B0;
+        background: $primary-hover;
         border: none;
         opacity: 1;
       }
@@ -196,7 +196,7 @@
       }
       
       &--incorrect {
-        background: #F85050;
+        background: $accent-red;
         opacity: 1;
         border: none;
       }
@@ -215,55 +215,55 @@
       align-items: center;
       
       .text--default {
-        color: #BCDCFA;
-        font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        color: $text-placeholder;
+        @include font-nunito;
         font-weight: 400;
         font-size: 16px;
         line-height: 24px;
       }
       
       .text--correct {
-        color: #FFFFFF;
+        color: $text-inverted;
         font-weight: 600;
       }
       
       .text--incorrect {
-        color: #FFFFFF;
+        color: $text-inverted;
         font-weight: 500;
       }
     }
   }
   
   .checkbox {
-    border: 1.5px solid #BCDCFA;
+    border: 1.5px solid $text-placeholder;
     
     &__dot {
-      background: #BCDCFA;
+      background: $text-placeholder;
     }
   }
   
   .answerItem__background--selected ~ .answerItem__icon .checkbox {
-    border-color: #BCDCFA;
+    border-color: $text-placeholder;
     
     .checkbox__dot {
-      background: #BCDCFA;
+      background: $text-placeholder;
       opacity: 1;
     }
   }
   
   .answerItem__background--correct ~ .answerItem__icon .checkbox {
-    border-color: #FFFFFF;
+    border-color: $text-inverted;
     
     .checkbox__dot {
-      background: #FFFFFF;
+      background: $text-inverted;
     }
   }
   
   .answerItem__background--incorrect ~ .answerItem__icon .checkbox {
-    border-color: #FFFFFF;
+    border-color: $text-inverted;
     
     .checkbox__dot {
-      background: #FFFFFF;
+      background: $text-inverted;
     }
   }
 }
