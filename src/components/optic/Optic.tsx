@@ -1,8 +1,9 @@
+import { forwardRef } from 'react';
 import styles from '../../styles/modules/Optic.module.scss';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { selectAnswer, setCurrentQuestionIndex } from '../../store/slices/testSlice';
 
-export const Optic = () => {
+export const Optic = forwardRef<HTMLDivElement, {}>((props, ref) => {
   const answers = ['A', 'B', 'C', 'D', 'E'];
   const dispatch = useAppDispatch();
   const { questions, userAnswers, isFinished, currentQuestionIndex, showAnswers } = useAppSelector((s) => s.test);
@@ -23,7 +24,7 @@ export const Optic = () => {
         </div>
       </header>
 
-      <div className={styles.scrollArea}>
+      <div className={styles.scrollArea} ref={ref}>
         <div className={styles.questionsList}>
           {Array.from({ length: soruSayisi }).map((_, i) => {
             const qId = questions[i]?.id ?? String(i + 1);
@@ -42,6 +43,7 @@ export const Optic = () => {
                 key={i}
                 className={styles.questionItem}
                 onClick={() => dispatch(setCurrentQuestionIndex(i))}
+                data-question-index={i}
               >
                 <div className={styles.questionItem__content}>
                   <div className={backgroundClassName} />
@@ -96,4 +98,4 @@ export const Optic = () => {
       </div>
     </div>
   );
-};
+});

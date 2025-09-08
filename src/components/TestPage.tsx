@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { Layout } from './layout/Layout';
 import { QuestionCard } from './question/QuestionCard';
 import { Optic } from './optic/Optic';
@@ -17,13 +17,30 @@ type ModalType = 'leave' | 'finish' | 'results' | 'mobileMenu' | null;
 
 export const TestPage = () => {
   const dispatch = useAppDispatch();
-  const { isFinished, showAnswers } = useAppSelector((s) => s.test);
+  const { isFinished, showAnswers, currentQuestionIndex } = useAppSelector((s) => s.test);
   const stats = useAppSelector(selectTestStats);
   const [activeModal, setActiveModal] = useState<ModalType>(null);
+  const opticScrollAreaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     dispatch(loadTestStart());
   }, [dispatch]);
+
+  useEffect(() => {
+    const container = opticScrollAreaRef.current;
+    if (!container) return;
+
+    const targetQuestionElement = container.querySelector(
+      `[data-question-index="${currentQuestionIndex}"]`
+    ) as HTMLElement;
+
+    if (targetQuestionElement) {
+      targetQuestionElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
+    }
+  }, [currentQuestionIndex]);
 
   const handleConfirmLeave = useCallback(() => {
     dispatch(finishTest());
@@ -108,7 +125,7 @@ export const TestPage = () => {
             </div>
           </div>
           <div className={styles.opticArea}>
-            <Optic />
+            <Optic ref={opticScrollAreaRef} />
           </div>
         </div>
       </div>
