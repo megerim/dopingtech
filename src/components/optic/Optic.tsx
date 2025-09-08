@@ -25,26 +25,26 @@ export const Optic = () => {
 
       <div className={styles.scrollArea}>
         <div className={styles.questionsList}>
-          {Array.from({ length: soruSayisi }).map((_, i) => (
-            <div
-              key={i}
-              className={styles.questionItem}
-              onClick={() => dispatch(setCurrentQuestionIndex(i))}
-            >
-              <div className={styles.questionItem__content}>
-                {(() => {
-                  const qId = questions[i]?.id ?? String(i + 1);
-                  const isActive = i === currentQuestionIndex;
-                  const isAnswered = Boolean(userAnswers[qId]);
-                  const bgClass = isActive
-                    ? styles['questionItem__background--heavy']
-                    : isAnswered
-                    ? styles['questionItem__background--medium']
-                    : styles['questionItem__background--light'];
-                  return (
-                    <div className={`${styles.questionItem__background} ${bgClass}`} />
-                  );
-                })()}
+          {Array.from({ length: soruSayisi }).map((_, i) => {
+            const qId = questions[i]?.id ?? String(i + 1);
+            const isActive = i === currentQuestionIndex;
+            const isAnswered = Boolean(userAnswers[qId]);
+            
+            const bgClass = isActive
+              ? styles['questionItem__background--heavy']
+              : isAnswered
+              ? styles['questionItem__background--medium']
+              : styles['questionItem__background--light'];
+            const backgroundClassName = `${styles.questionItem__background} ${bgClass}`;
+            
+            return (
+              <div
+                key={i}
+                className={styles.questionItem}
+                onClick={() => dispatch(setCurrentQuestionIndex(i))}
+              >
+                <div className={styles.questionItem__content}>
+                  <div className={backgroundClassName} />
 
                 <div className={styles.questionItem__inner}>
                   <span className={styles.questionItem__label}>
@@ -90,7 +90,8 @@ export const Optic = () => {
                 </div>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>

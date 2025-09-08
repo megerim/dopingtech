@@ -26,6 +26,36 @@ const OptionsComponent = () => {
         const reveal = showAnswers && isFinished;
         const isCorrect = reveal && current?.correctAnswer === option;
         const isIncorrect = reveal && isSelected && current?.correctAnswer !== option;
+        
+        let textClass = styles['text--default'];
+        if (isCorrect) {
+          textClass = styles['text--correct'];
+        } else if (isIncorrect) {
+          textClass = styles['text--incorrect'];
+        }
+        
+        const optionText = current && current.options && current.options[option]
+          ? formatTextWithStyles({
+              text: current.options[option],
+              className: {
+                underline: styles.underline,
+                bold: styles.bold,
+                both: styles.both,
+              },
+            })
+          : `${index + 1}. seçenek`;
+        
+        const baseClass = styles.answerItem__background;
+        let stateClass = styles['answerItem__background--default'];
+        if (isCorrect) {
+          stateClass = styles['answerItem__background--correct'];
+        } else if (isIncorrect) {
+          stateClass = styles['answerItem__background--incorrect'];
+        } else if (isSelected) {
+          stateClass = styles['answerItem__background--selected'];
+        }
+        const backgroundClassName = `${baseClass} ${stateClass}`;
+        
         return (
           <label key={option} className={styles.answerItem}>
             <div className={styles.answerItem__icon}>
@@ -48,46 +78,11 @@ const OptionsComponent = () => {
               </span>
             </div>
             <div className={styles.answerItem__text}>
-              {(() => {
-                let textClass = styles['text--default'];
-                if (isCorrect) {
-                  textClass = styles['text--correct'];
-                } else if (isIncorrect) {
-                  textClass = styles['text--incorrect'];
-                }
-                return (
-                  <span className={textClass}>
-                    {option}{' '}
-                    {(() => {
-                      if (current && current.options && current.options[option]) {
-                        return formatTextWithStyles({
-                          text: current.options[option],
-                          className: {
-                            underline: styles.underline,
-                            bold: styles.bold,
-                            both: styles.both,
-                          },
-                        });
-                      } else {
-                        return `${index + 1}. seçenek`;
-                      }
-                    })()}
-                  </span>
-                );
-              })()}
+              <span className={textClass}>
+                {option}) {optionText}
+              </span>
             </div>
-            {(() => {
-              const baseClass = styles.answerItem__background;
-              let stateClass = styles['answerItem__background--default'];
-              if (isCorrect) {
-                stateClass = styles['answerItem__background--correct'];
-              } else if (isIncorrect) {
-                stateClass = styles['answerItem__background--incorrect'];
-              } else if (isSelected) {
-                stateClass = styles['answerItem__background--selected'];
-              }
-              return <div className={`${baseClass} ${stateClass}`} />;
-            })()}
+            <div className={backgroundClassName} />
           </label>
         );
       })}
