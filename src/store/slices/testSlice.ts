@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, createSelector } from '@reduxjs/toolkit';
+import type { RootState } from '../index';
 
 export type Question = {
   id: string;
@@ -98,3 +99,31 @@ export const {
 } = testSlice.actions;
 
 export default testSlice.reducer;
+
+// Selectors
+const selectQuestions = (state: RootState) => state.test.questions;
+const selectUserAnswers = (state: RootState) => state.test.userAnswers;
+
+// Memoized selector for test statistics
+export const selectTestStats = createSelector(
+  [selectQuestions, selectUserAnswers],
+  (questions, userAnswers) => {
+    let correct = 0;
+    let wrong = 0;
+    let empty = 0;
+
+    questions.forEach((question: Question) => {
+      const userAnswer = userAnswers[question.id];
+      if (!userAnswer) {
+        empty++;
+      } else if (userAnswer === question.correctAnswer) {
+        correct++;
+      } else {
+        wrong++;
+      }
+    });
+
+    const net = correct - Math.floor(wrong / 3);
+    return { correct, wrong, empty, net };
+  }
+);

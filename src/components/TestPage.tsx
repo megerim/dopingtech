@@ -8,14 +8,15 @@ import { MobileMenuModal } from './modals/MobileMenuModal';
 import { ThemeProvider } from '../contexts/ThemeContext';
 import styles from '../styles/modules/TestPage.module.scss';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { loadTestStart, goToNextQuestion, goToPreviousQuestion, finishTest, toggleShowAnswers } from '../store/slices/testSlice';
+import { loadTestStart, goToNextQuestion, goToPreviousQuestion, finishTest, toggleShowAnswers, selectTestStats } from '../store/slices/testSlice';
 import { LeaveTestModal } from './modals/LeaveTestModal';
 import { FinishTestModal } from './modals/FinishTestModal';
 import { TestResultsModal } from './modals/TestResultsModal';
 
 export const TestPage = () => {
   const dispatch = useAppDispatch();
-  const { isFinished, showAnswers, questions, userAnswers } = useAppSelector((s) => s.test);
+  const { isFinished, showAnswers } = useAppSelector((s) => s.test);
+  const stats = useAppSelector(selectTestStats);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFinishModalOpen, setIsFinishModalOpen] = useState(false);
   const [isResultsModalOpen, setIsResultsModalOpen] = useState(false);
@@ -31,41 +32,17 @@ export const TestPage = () => {
   };
 
   const handleConfirmFinish = () => {
-    const testStats = calculateStats();
     console.log('Test Statistics:', {
-      net: testStats.net,
-      correct: testStats.correct,
-      wrong: testStats.wrong,
-      empty: testStats.empty,
-      totalQuestions: questions.length
+      net: stats.net,
+      correct: stats.correct,
+      wrong: stats.wrong,
+      empty: stats.empty
     });
     dispatch(finishTest());
     setIsFinishModalOpen(false);
     setIsResultsModalOpen(true);
   };
 
-  // Test score calculation
-  const calculateStats = () => {
-    let correct = 0;
-    let wrong = 0;
-    let empty = 0;
-
-    questions.forEach((question) => {
-      const userAnswer = userAnswers[question.id];
-      if (!userAnswer) {
-        empty++;
-      } else if (userAnswer === question.correctAnswer) {
-        correct++;
-      } else {
-        wrong++;
-      }
-    });
-
-    const net = correct - Math.floor(wrong / 3);
-    return { correct, wrong, empty, net };
-  };
-
-  const stats = calculateStats();
   return (
     <ThemeProvider>
       <Layout>
