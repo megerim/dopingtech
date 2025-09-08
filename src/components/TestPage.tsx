@@ -5,6 +5,7 @@ import { Optic } from './optic/Optic';
 import { Timer } from './mobile/Timer';
 import { ProgressBar } from './mobile/ProgressBar';
 import { MobileMenuModal } from './modals/MobileMenuModal';
+import { ThemeProvider } from '../contexts/ThemeContext';
 import styles from '../styles/modules/TestPage.module.scss';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { loadTestStart, goToNextQuestion, goToPreviousQuestion, finishTest, toggleShowAnswers } from '../store/slices/testSlice';
@@ -66,8 +67,9 @@ export const TestPage = () => {
 
   const stats = calculateStats();
   return (
-    <Layout>
-      <div className={styles.testPageContainer}>
+    <ThemeProvider>
+      <Layout>
+        <div className={styles.testPageContainer}>
         <header className={styles.header}>
           <div className={styles.desktopHeader}>
             <div className={styles.headerLeft}>
@@ -158,5 +160,6 @@ export const TestPage = () => {
         onShowAnswerSheet={() => {}}
       />
     </Layout>
+    </ThemeProvider>
   );
 };
