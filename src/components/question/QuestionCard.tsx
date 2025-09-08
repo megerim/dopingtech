@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import styles from '../../styles/modules/QuestionCard.module.scss';
 import { Options } from './Options';
 import { useAppSelector } from '../../store/hooks';
@@ -9,6 +10,19 @@ export const QuestionCard = () => {
     (s) => s.test
   );
   const current = questions[currentQuestionIndex];
+
+  const formattedQuestion = useMemo(() => {
+    if (!current?.question) return '';
+    
+    return formatTextWithStyles({
+      text: current.question,
+      className: {
+        underline: styles.highlight,
+        bold: styles.bold,
+        both: styles.both,
+      },
+    });
+  }, [current?.question]);
 
   return (
     <div className={styles.questionCard}>
@@ -51,16 +65,7 @@ export const QuestionCard = () => {
                   </div>
                 )}
                 <div className={styles.question}>
-                  <p>
-                    {formatTextWithStyles({
-                      text: current.question,
-                      className: {
-                        underline: styles.highlight,
-                        bold: styles.bold,
-                        both: styles.both,
-                      },
-                    })}
-                  </p>
+                  <p>{formattedQuestion}</p>
                 </div>
                 {current.text && (
                   <div className={styles.quoteText}>

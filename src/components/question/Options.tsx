@@ -1,17 +1,14 @@
 import { memo } from 'react';
 import styles from '../../styles/modules/Options.module.scss';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { selectAnswer } from '../../store/slices/testSlice';
-import { formatTextWithStyles } from '../../utils/textFormatter';
+import { useAppSelector } from '../../store/hooks';
+import { OptionItem } from './OptionItem';
 
 const OptionsComponent = () => {
-  const dispatch = useAppDispatch();
   const { questions, currentQuestionIndex, userAnswers, isFinished, showAnswers } = useAppSelector(
     (s) => s.test
   );
   const current = questions[currentQuestionIndex];
   const options = ['A', 'B', 'C', 'D', 'E'];
-
 
   return (
     <form
@@ -34,16 +31,7 @@ const OptionsComponent = () => {
           textClass = styles['text--incorrect'];
         }
         
-        const optionText = current && current.options && current.options[option]
-          ? formatTextWithStyles({
-              text: current.options[option],
-              className: {
-                underline: styles.underline,
-                bold: styles.bold,
-                both: styles.both,
-              },
-            })
-          : `${index + 1}. seçenek`;
+        const optionText = current?.options?.[option] || '';
         
         const baseClass = styles.answerItem__background;
         let stateClass = styles['answerItem__background--default'];
@@ -57,33 +45,19 @@ const OptionsComponent = () => {
         const backgroundClassName = `${baseClass} ${stateClass}`;
         
         return (
-          <label key={option} className={styles.answerItem}>
-            <div className={styles.answerItem__icon}>
-              <input
-                type="radio"
-                name="answer"
-                value={option}
-                checked={isSelected}
-                onChange={() =>
-                  current &&
-                  dispatch(
-                    selectAnswer({ questionId: current.id, answer: option })
-                  )
-                }
-                className={styles.visuallyHidden}
-                disabled={isFinished}
-              />
-              <span className={styles.checkbox}>
-                <span className={styles.checkbox__dot} />
-              </span>
-            </div>
-            <div className={styles.answerItem__text}>
-              <span className={textClass}>
-                {option}) {optionText}
-              </span>
-            </div>
-            <div className={backgroundClassName} />
-          </label>
+          <OptionItem
+            key={option}
+            option={option}
+            index={index}
+            currentId={current?.id}
+            optionText={optionText}
+            isSelected={isSelected}
+            isCorrect={isCorrect}
+            isIncorrect={isIncorrect}
+            isFinished={isFinished}
+            textClass={textClass}
+            backgroundClassName={backgroundClassName}
+          />
         );
       })}
     </form>
