@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Layout } from './layout/Layout';
 import { QuestionCard } from './question/QuestionCard';
 import { Optic } from './optic/Optic';
@@ -26,12 +26,12 @@ export const TestPage = () => {
     dispatch(loadTestStart());
   }, [dispatch]);
 
-  const handleConfirmLeave = () => {
+  const handleConfirmLeave = useCallback(() => {
     dispatch(finishTest());
     setIsModalOpen(false);
-  };
+  }, [dispatch]);
 
-  const handleConfirmFinish = () => {
+  const handleConfirmFinish = useCallback(() => {
     console.log('Test Statistics:', {
       net: stats.net,
       correct: stats.correct,
@@ -41,7 +41,7 @@ export const TestPage = () => {
     dispatch(finishTest());
     setIsFinishModalOpen(false);
     setIsResultsModalOpen(true);
-  };
+  }, [dispatch, stats]);
 
   return (
     <ThemeProvider>
