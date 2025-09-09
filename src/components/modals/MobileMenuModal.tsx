@@ -25,33 +25,36 @@ const Modal: React.FC<MobileMenuModalProps> = ({
 
   return createPortal(
     <div className={styles.backdrop} onClick={handleBackdropClick}>
-      <div className={styles.modal}>
-        <button
-          className={styles.closeButton}
-          onClick={onClose}
-          aria-label="Close"
-        >
-          ×
-        </button>
-        <div className={styles.menuContent}>
+      <div className={styles.sheet} role="dialog" aria-modal="true">
+        <div className={styles.sheetGroup}>
           <button
-            className={styles.menuItem}
-            onClick={() => {
-              onFinishTest();
-            }}
-          >
-            <span>Testi Bitir</span>
-          </button>
-          <button
-            className={styles.menuItem}
+            className={`${styles.sheetItem} ${styles.answerKey}`}
             onClick={() => {
               onShowAnswerSheet();
               onClose();
             }}
+            type="button"
           >
-            <span>Cevap Anahtarı</span>
+            Cevap Anahtarı
+          </button>
+          <div className={styles.divider} />
+          <button
+            className={`${styles.sheetItem} ${styles.finishTest}`}
+            onClick={() => {
+              onFinishTest();
+            }}
+            type="button"
+          >
+            Testi Bitir
           </button>
         </div>
+        <button
+          className={`${styles.sheetItem} ${styles.cancel}`}
+          onClick={onClose}
+          type="button"
+        >
+          Vazgeç
+        </button>
       </div>
     </div>,
     document.body,
