@@ -80,7 +80,7 @@
 
     .text--default {
       color: $text-primary;
-      font-weight: 400;
+  font-weight: 500;
     }
 
     .underline {
@@ -187,7 +187,7 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  border: 1.5px solid $primary-dark;
+  border: 2px solid $primary-dark;
   box-sizing: border-box;
   padding: 3px;
   background-color: transparent;
@@ -288,7 +288,7 @@
       .text--default {
         color: $text-placeholder;
         @include font-nunito;
-        font-weight: 400;
+  font-weight: 500;
         font-size: 16px;
         line-height: 24px;
       }
