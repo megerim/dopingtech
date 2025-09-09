@@ -73,6 +73,11 @@ export const formatTextWithStyles = ({
   if (lastIndex < text.length) {
     parts.push(text.slice(lastIndex));
   }
-
-  return <>{parts}</>;
+  return (
+    <>
+      {parts.map((p, i) =>
+        typeof p === 'string' ? p.replace(/\s{2,}/g, ' ') : p,
+      )}
+    </>
+  );
 };
