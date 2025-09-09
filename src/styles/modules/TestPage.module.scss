@@ -219,8 +219,10 @@
 
 @include for-tablet-portrait-up {
   .testPageContainer {
-    padding: 0;
-    height: 100vh;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   }
 
   .header {
@@ -250,6 +252,9 @@
     gap: 0;
     padding-top: 155px;
     padding-bottom: 80px;
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   }
 
   .questionArea {
@@ -274,6 +279,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 10px;
+    z-index: 10;
   }
 
   .navButton {
