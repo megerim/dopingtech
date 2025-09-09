@@ -8,6 +8,8 @@ export type Question = {
   text?: string;
   options: Record<string, string>;
   correctAnswer?: string;
+  subject?: string;
+  testTitle?: string;
 };
 
 interface TestState {
@@ -18,6 +20,8 @@ interface TestState {
   error: string | null;
   isFinished: boolean;
   showAnswers: boolean;
+  subject?: string | null;
+  testTitle?: string | null;
 }
 
 const initialState: TestState = {
@@ -28,6 +32,8 @@ const initialState: TestState = {
   error: null,
   isFinished: false,
   showAnswers: false,
+  subject: null,
+  testTitle: null,
 };
 
 const testSlice = createSlice({
@@ -45,6 +51,13 @@ const testSlice = createSlice({
       state.userAnswers = {};
       state.isFinished = false;
       state.showAnswers = false;
+    },
+    loadTestMeta: (
+      state,
+      action: PayloadAction<{ subject?: string; testTitle?: string }>,
+    ) => {
+      state.subject = action.payload.subject ?? state.subject ?? null;
+      state.testTitle = action.payload.testTitle ?? state.testTitle ?? null;
     },
     loadTestFailure: (state, action: PayloadAction<string>) => {
       state.isLoading = false;
@@ -95,6 +108,7 @@ export const {
   setCurrentQuestionIndex,
   finishTest,
   toggleShowAnswers,
+  loadTestMeta,
 } = testSlice.actions;
 
 export default testSlice.reducer;

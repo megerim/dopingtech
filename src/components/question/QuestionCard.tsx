@@ -5,10 +5,10 @@ import { useAppSelector } from '../../store/hooks';
 import { formatTextWithStyles } from '../../utils/textFormatter';
 
 export const QuestionCard = () => {
-  const { questions, currentQuestionIndex, isLoading, error } = useAppSelector(
-    (s) => s.test,
-  );
+  const { questions, currentQuestionIndex, isLoading, error, subject } =
+    useAppSelector((s) => s.test);
   const current = questions[currentQuestionIndex];
+  const resolvedSubject = subject || 'Türkçe';
 
   const formattedQuestion = useMemo(() => {
     if (!current?.question) return '';
@@ -32,7 +32,7 @@ export const QuestionCard = () => {
               ? 'Yükleniyor…'
               : error
                 ? `Hata: ${error}`
-                : `Soru: Türkçe #${currentQuestionIndex + 1}`}
+                : `Soru: ${resolvedSubject} #${currentQuestionIndex + 1}`}
           </span>
         </div>
         <div className={styles.actionButtons}>

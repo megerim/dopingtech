@@ -8,10 +8,17 @@ import {
 import {
   loadTestFailure,
   loadTestSuccess,
+  loadTestMeta,
   Question,
 } from '../slices/testSlice';
 
-function fetchQuestionsApi(): Promise<Question[]> {
+interface QuestionsResponse {
+  subject?: string;
+  testTitle?: string;
+  questions: Question[];
+}
+
+function fetchQuestionsApi(): Promise<QuestionsResponse> {
   return fetch('/data/questions.json').then((res) => {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return res.json();
@@ -19,13 +26,18 @@ function fetchQuestionsApi(): Promise<Question[]> {
 }
 
 function* loadTestWorker(): Generator<
-  CallEffect<Question[]> | PutEffect,
+  CallEffect<QuestionsResponse> | PutEffect,
   void,
-  Question[]
+  QuestionsResponse
 > {
   try {
-    const questions: Question[] = yield call(fetchQuestionsApi);
-    yield put(loadTestSuccess(questions));
+    const data: QuestionsResponse = yield call(fetchQuestionsApi);
+    if (data.subject || data.testTitle) {
+      yield put(
+        loadTestMeta({ subject: data.subject, testTitle: data.testTitle }),
+      );
+    }
+    yield put(loadTestSuccess(data.questions || []));
   } catch (err: unknown) {
     const errorMessage =
       err instanceof Error ? err.message : 'Failed to load questions';

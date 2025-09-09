@@ -12,6 +12,8 @@ export const Optic = forwardRef<HTMLDivElement, {}>((_props, ref) => {
     showAnswers,
   } = useAppSelector((s) => s.test);
   const questionCount = questions.length || 15;
+  const { subject } = useAppSelector((s) => s.test);
+  const resolvedSubject = subject || 'Türkçe';
 
   return (
     <div className={styles.card}>
@@ -24,7 +26,7 @@ export const Optic = forwardRef<HTMLDivElement, {}>((_props, ref) => {
           />
         </div>
         <div className={styles.header__content}>
-          <h2 className={styles.header__title}>Türkçe</h2>
+          <h2 className={styles.header__title}>{resolvedSubject}</h2>
           <p className={styles.header__subtitle}>{`${questionCount} Soru`}</p>
         </div>
       </header>

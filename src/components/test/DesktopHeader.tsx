@@ -14,6 +14,8 @@ export const DesktopHeader: React.FC<DesktopHeaderProps> = ({
 }) => {
   const dispatch = useAppDispatch();
   const { isFinished, showAnswers } = useAppSelector((s) => s.test);
+  const { testTitle } = useAppSelector((s) => s.test);
+  const dynamicTitle = testTitle || 'Test';
 
   return (
     <div className={styles.desktopHeader}>
@@ -21,7 +23,7 @@ export const DesktopHeader: React.FC<DesktopHeaderProps> = ({
         <button className={styles.backButton} onClick={onOpenLeaveModal}>
           <img src="/dh/arrow-left.svg" alt="Back" />
         </button>
-        <h1 className={styles.pageTitle}>Konu Tarama Testi #1</h1>
+        <h1 className={styles.pageTitle}>{dynamicTitle}</h1>
       </div>
 
       <div className={styles.headerRight}>
