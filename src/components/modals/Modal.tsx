@@ -43,7 +43,7 @@ export const Modal: FC<ModalProps> = memo(({ isOpen, onClose, children }) => {
         {children}
       </div>
     </div>,
-    getModalRoot()
+    getModalRoot(),
   );
 });
 

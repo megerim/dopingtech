@@ -30,7 +30,7 @@
     transition: all 0.2s ease;
 
     &--default {
-      background-color: #EDF2F4;
+      background-color: #edf2f4;
       opacity: 0.4;
     }
 
@@ -61,8 +61,8 @@
   }
 
   &__text {
-  position: absolute;
-  left: 55px;
+    position: absolute;
+    left: 55px;
     top: 18px;
     display: flex;
     align-items: center;
@@ -78,11 +78,11 @@
     .underline {
       text-decoration: underline;
     }
-    
+
     .bold {
       font-weight: 700;
     }
-    
+
     .both {
       font-weight: 700;
       text-decoration: underline;
@@ -96,7 +96,7 @@
     .text--incorrect {
       color: $text-inverted;
       font-weight: 500;
-      
+
       .underline,
       .bold,
       .both {
@@ -173,47 +173,47 @@
 @include for-tablet-portrait-up {
   .answerItem {
     min-height: 78px;
-    
+
     &__background {
       border-radius: $border-radius-md;
-      
+
       &--default {
         background: $primary-light;
         opacity: 0.6;
         border: none;
       }
-      
+
       &--selected {
         background: $primary-hover;
         border: none;
         opacity: 1;
       }
-      
+
       &--correct {
         background: rgba(26, 188, 156, 0.8);
         border: none;
         opacity: 1;
       }
-      
+
       &--incorrect {
         background: $accent-red;
         opacity: 1;
         border: none;
       }
     }
-    
+
     &__icon {
       top: 27px;
       left: 16px;
     }
-    
+
     &__text {
       top: 15px;
       padding-right: 20px;
       min-height: 48px;
       display: flex;
       align-items: center;
-      
+
       .text--default {
         color: $text-placeholder;
         @include font-nunito;
@@ -221,47 +221,47 @@
         font-size: 16px;
         line-height: 24px;
       }
-      
+
       .text--correct {
         color: $text-inverted;
         font-weight: 600;
       }
-      
+
       .text--incorrect {
         color: $text-inverted;
         font-weight: 500;
       }
     }
   }
-  
+
   .checkbox {
     border: 1.5px solid $text-placeholder;
-    
+
     &__dot {
       background: $text-placeholder;
     }
   }
-  
+
   .answerItem__background--selected ~ .answerItem__icon .checkbox {
     border-color: $text-placeholder;
-    
+
     .checkbox__dot {
       background: $text-placeholder;
       opacity: 1;
     }
   }
-  
+
   .answerItem__background--correct ~ .answerItem__icon .checkbox {
     border-color: $text-inverted;
-    
+
     .checkbox__dot {
       background: $text-inverted;
     }
   }
-  
+
   .answerItem__background--incorrect ~ .answerItem__icon .checkbox {
     border-color: $text-inverted;
-    
+
     .checkbox__dot {
       background: $text-inverted;
     }

@@ -63,15 +63,15 @@
   font-weight: 800;
   color: $text-primary;
   line-height: 1;
-  
+
   &.correct {
     color: $success;
   }
-  
+
   &.wrong {
     color: $error;
   }
-  
+
   &.empty {
     color: $warning;
   }
@@ -99,11 +99,11 @@
 }
 
 .cancelButton {
-  background: #EDF2F4;
+  background: #edf2f4;
   color: $text-primary;
 
   &:hover {
-    background: #E5EAEC;
+    background: #e5eaec;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 }
@@ -113,7 +113,7 @@
   color: $text-inverted;
 
   &:hover {
-    background: linear-gradient(180deg, #34D399 0%, $success 100%);
+    background: linear-gradient(180deg, #34d399 0%, $success 100%);
     box-shadow: 0 2px 12px rgba(16, 185, 129, 0.3);
   }
 }

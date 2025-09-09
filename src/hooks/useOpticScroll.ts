@@ -8,7 +8,7 @@ export const useOpticScroll = (currentQuestionIndex: number) => {
     if (!container) return;
 
     const targetQuestionElement = container.querySelector(
-      `[data-question-index="${currentQuestionIndex}"]`
+      `[data-question-index="${currentQuestionIndex}"]`,
     ) as HTMLElement;
 
     if (targetQuestionElement) {

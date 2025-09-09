@@ -35,7 +35,7 @@ const OptionItemComponent = ({
     if (!optionText || optionText === `${index + 1}. seçenek`) {
       return `${index + 1}. seçenek`;
     }
-    
+
     return formatTextWithStyles({
       text: optionText,
       className: {

@@ -1,5 +1,15 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
-import { loadTestFailure, loadTestSuccess, Question } from '../slices/testSlice';
+import {
+  call,
+  put,
+  takeEvery,
+  CallEffect,
+  PutEffect,
+} from 'redux-saga/effects';
+import {
+  loadTestFailure,
+  loadTestSuccess,
+  Question,
+} from '../slices/testSlice';
 
 function fetchQuestionsApi(): Promise<Question[]> {
   return fetch('/data/questions.json').then((res) => {
@@ -8,12 +18,17 @@ function fetchQuestionsApi(): Promise<Question[]> {
   });
 }
 
-function* loadTestWorker(): Generator<any, void, Question[]> {
+function* loadTestWorker(): Generator<
+  CallEffect<Question[]> | PutEffect,
+  void,
+  Question[]
+> {
   try {
     const questions: Question[] = yield call(fetchQuestionsApi);
     yield put(loadTestSuccess(questions));
   } catch (err: unknown) {
-    const errorMessage = err instanceof Error ? err.message : 'Failed to load questions';
+    const errorMessage =
+      err instanceof Error ? err.message : 'Failed to load questions';
     yield put(loadTestFailure(errorMessage));
   }
 }

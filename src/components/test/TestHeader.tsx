@@ -10,22 +10,22 @@ interface TestHeaderProps {
   onOpenMobileMenu: () => void;
 }
 
-export const TestHeader: React.FC<TestHeaderProps> = ({ 
-  onOpenLeaveModal, 
+export const TestHeader: React.FC<TestHeaderProps> = ({
+  onOpenLeaveModal,
   onOpenFinishModal,
-  onOpenMobileMenu 
+  onOpenMobileMenu,
 }) => {
   const { isMobile } = useTheme();
 
   return (
     <header className={styles.header}>
       {isMobile ? (
-        <MobileHeader 
+        <MobileHeader
           onOpenLeaveModal={onOpenLeaveModal}
           onOpenMobileMenu={onOpenMobileMenu}
         />
       ) : (
-        <DesktopHeader 
+        <DesktopHeader
           onOpenLeaveModal={onOpenLeaveModal}
           onOpenFinishModal={onOpenFinishModal}
         />

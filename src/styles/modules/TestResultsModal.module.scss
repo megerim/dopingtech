@@ -49,7 +49,7 @@
   width: 100%;
   margin-bottom: 2rem;
   padding: 1.5rem;
-  background: linear-gradient(135deg, #F8FAFB 0%, #F3F4F6 100%);
+  background: linear-gradient(135deg, #f8fafb 0%, #f3f4f6 100%);
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
@@ -72,20 +72,20 @@
   font-weight: 800;
   color: $text-primary;
   line-height: 1;
-  
+
   &.net {
     color: $info;
     font-size: 32px;
   }
-  
+
   &.correct {
     color: $success;
   }
-  
+
   &.wrong {
     color: $error;
   }
-  
+
   &.empty {
     color: $warning;
   }
@@ -107,7 +107,7 @@
   color: $text-inverted;
 
   &:hover {
-    background: linear-gradient(180deg, #34D399 0%, $success 100%);
+    background: linear-gradient(180deg, #34d399 0%, $success 100%);
     box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
   }
 }
@@ -134,7 +134,7 @@
 
   .statValue {
     font-size: 24px;
-    
+
     &.net {
       font-size: 28px;
     }

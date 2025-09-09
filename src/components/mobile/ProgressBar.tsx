@@ -8,15 +8,12 @@ export const ProgressBar = () => {
   return (
     <div className={styles.progressContainer}>
       <div className={styles.progressInfo}>
-        <span className={styles.testTitle}>Temel Kavramlar Seviye Belirleme Sınavı</span>
-        <span className={styles.questionCount}>
-          {currentQuestion}/15
+        <span className={styles.testTitle}>
+          Temel Kavramlar Seviye Belirleme Sınavı
         </span>
+        <span className={styles.questionCount}>{currentQuestion}/15</span>
       </div>
-      <div 
-        className={styles.progressBar}
-        data-question={currentQuestion}
-      >
+      <div className={styles.progressBar} data-question={currentQuestion}>
         <div className={styles.progressFill} />
         <div className={styles.progressSegments}>
           {Array.from({ length: 15 }, (_, i) => (

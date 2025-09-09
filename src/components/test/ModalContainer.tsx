@@ -25,7 +25,7 @@ export const ModalContainer: React.FC<ModalContainerProps> = ({
   onConfirmLeave,
   onConfirmFinish,
   onOpenFinishModal,
-  stats
+  stats,
 }) => {
   return (
     <>

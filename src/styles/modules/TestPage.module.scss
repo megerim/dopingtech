@@ -210,7 +210,6 @@
   border-radius: 50%;
 }
 
-
 @include for-tablet-portrait-up {
   .testPageContainer {
     padding: 0;
@@ -276,20 +275,20 @@
     font-weight: 700;
     font-size: 14px;
     color: $mobile-text-light;
-    
+
     &:first-child {
       width: 135px;
       background: var(--gradient-blue);
-      
+
       img {
         filter: brightness(0) invert(1);
       }
     }
-    
+
     &:last-child {
       width: 140px;
       background: var(--gradient-green);
-      
+
       img {
         filter: brightness(0) invert(1);
       }

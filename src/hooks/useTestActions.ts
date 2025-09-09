@@ -15,7 +15,7 @@ export const useTestActions = () => {
       net: stats.net,
       correct: stats.correct,
       wrong: stats.wrong,
-      empty: stats.empty
+      empty: stats.empty,
     });
     dispatch(finishTest());
     return true;
@@ -24,6 +24,6 @@ export const useTestActions = () => {
   return {
     handleConfirmLeave,
     handleConfirmFinish,
-    stats
+    stats,
   };
 };

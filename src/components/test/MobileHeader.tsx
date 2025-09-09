@@ -8,7 +8,10 @@ interface MobileHeaderProps {
   onOpenMobileMenu: () => void;
 }
 
-export const MobileHeader: React.FC<MobileHeaderProps> = ({ onOpenLeaveModal, onOpenMobileMenu }) => {
+export const MobileHeader: React.FC<MobileHeaderProps> = ({
+  onOpenLeaveModal,
+  onOpenMobileMenu,
+}) => {
   return (
     <div className={styles.mobileHeader}>
       <div className={styles.mobileTopRow}>

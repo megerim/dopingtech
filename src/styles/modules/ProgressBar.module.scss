@@ -70,7 +70,7 @@
 $total-questions: 15;
 
 @for $i from 1 through $total-questions {
-  .progressBar[data-question="#{$i}"] .progressFill {
+  .progressBar[data-question='#{$i}'] .progressFill {
     width: calc(#{$i} / #{$total-questions} * 100%);
   }
 }
@@ -91,7 +91,7 @@ $total-questions: 15;
   flex: 1;
   height: 100%;
   border-left: 2px solid rgba(255, 255, 255, 0.35);
-  
+
   &:first-child {
     border-left: none;
   }

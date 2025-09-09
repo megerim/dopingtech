@@ -4,9 +4,13 @@ import { useAppSelector } from '../../store/hooks';
 import { OptionItem } from './OptionItem';
 
 const OptionsComponent = () => {
-  const { questions, currentQuestionIndex, userAnswers, isFinished, showAnswers } = useAppSelector(
-    (s) => s.test
-  );
+  const {
+    questions,
+    currentQuestionIndex,
+    userAnswers,
+    isFinished,
+    showAnswers,
+  } = useAppSelector((s) => s.test);
   const current = questions[currentQuestionIndex];
   const options = ['A', 'B', 'C', 'D', 'E'];
 
@@ -22,17 +26,18 @@ const OptionsComponent = () => {
         const isSelected = selectedValue === option;
         const reveal = showAnswers && isFinished;
         const isCorrect = reveal && current?.correctAnswer === option;
-        const isIncorrect = reveal && isSelected && current?.correctAnswer !== option;
-        
+        const isIncorrect =
+          reveal && isSelected && current?.correctAnswer !== option;
+
         let textClass = styles['text--default'];
         if (isCorrect) {
           textClass = styles['text--correct'];
         } else if (isIncorrect) {
           textClass = styles['text--incorrect'];
         }
-        
+
         const optionText = current?.options?.[option] || '';
-        
+
         const baseClass = styles.answerItem__background;
         let stateClass = styles['answerItem__background--default'];
         if (isCorrect) {
@@ -43,7 +48,7 @@ const OptionsComponent = () => {
           stateClass = styles['answerItem__background--selected'];
         }
         const backgroundClassName = `${baseClass} ${stateClass}`;
-        
+
         return (
           <OptionItem
             key={option}

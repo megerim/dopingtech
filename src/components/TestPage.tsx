@@ -16,7 +16,7 @@ import styles from '../styles/modules/TestPage.module.scss';
 export const TestPage = () => {
   const dispatch = useAppDispatch();
   const { currentQuestionIndex } = useAppSelector((s) => s.test);
-  
+
   const { activeModal, openModal, closeModal } = useModalManager();
   const opticScrollAreaRef = useOpticScroll(currentQuestionIndex);
   const { handleConfirmLeave, handleConfirmFinish, stats } = useTestActions();

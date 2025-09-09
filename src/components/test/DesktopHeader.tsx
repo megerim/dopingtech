@@ -8,7 +8,10 @@ interface DesktopHeaderProps {
   onOpenFinishModal: () => void;
 }
 
-export const DesktopHeader: React.FC<DesktopHeaderProps> = ({ onOpenLeaveModal, onOpenFinishModal }) => {
+export const DesktopHeader: React.FC<DesktopHeaderProps> = ({
+  onOpenLeaveModal,
+  onOpenFinishModal,
+}) => {
   const dispatch = useAppDispatch();
   const { isFinished, showAnswers } = useAppSelector((s) => s.test);
 
@@ -25,19 +28,25 @@ export const DesktopHeader: React.FC<DesktopHeaderProps> = ({ onOpenLeaveModal, 
         <div className={styles.toggleContainer}>
           <span>Cevapları Göster</span>
           <button
-            className={`${styles.switch} ${showAnswers ? styles['switch--on'] : ''}`}
+            className={`${styles.switch} ${
+              showAnswers ? styles['switch--on'] : ''
+            }`}
             onClick={() => dispatch(toggleShowAnswers())}
             disabled={!isFinished}
             aria-pressed={showAnswers}
             aria-label="Cevapları Göster"
-            title={!isFinished ? 'Testi bitirdikten sonra kullanılabilir' : 'Cevapları göster'}
+            title={
+              !isFinished
+                ? 'Testi bitirdikten sonra kullanılabilir'
+                : 'Cevapları göster'
+            }
           >
             <span className={styles.switch__slider} />
           </button>
         </div>
-        <button 
-          className={styles.endTestButton} 
-          onClick={() => isFinished ? null : onOpenFinishModal()}
+        <button
+          className={styles.endTestButton}
+          onClick={() => (isFinished ? null : onOpenFinishModal())}
         >
           <div className={styles.endTestButton__icon}>
             <img src="/dh/shutdown.png" alt="End Test" />

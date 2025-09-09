@@ -10,6 +10,9 @@
   background: var(--bg-color);
   border-right: 1px solid $border-color;
   box-shadow: 4px 4px 16px rgba(112, 144, 176, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
 }
 
 @include for-tablet-portrait-up {
@@ -22,7 +25,7 @@
   margin: 39px 0 0 29px;
   width: 44px;
   height: 42px;
-  
+
   img {
     width: 100%;
     height: 100%;
@@ -35,6 +38,8 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  flex: 1;
+  min-height: 0;
 }
 
 .navIcon {
@@ -45,11 +50,11 @@
   border-radius: $border-radius-md;
   transition: background 0.2s;
   position: relative;
-  
+
   &:hover {
     background: $bg-hover;
   }
-  
+
   // Inner icon button
   &::after {
     content: '';
@@ -58,7 +63,7 @@
     border-radius: 9px;
     position: absolute;
   }
-  
+
   img {
     width: 18px;
     height: 18px;
@@ -66,38 +71,38 @@
     z-index: 1;
     position: relative;
   }
-  
+
   // Icon backgrounds
   &--grid::after {
-    @include linear-gradient(180deg, $accent-purple 0%, #6980DA 100%);
+    @include linear-gradient(180deg, $accent-purple 0%, #6980da 100%);
   }
-  
+
   &--book::after {
-    @include linear-gradient(180deg, $accent-orange 0%, #D78C3F 100%);
+    @include linear-gradient(180deg, $accent-orange 0%, #d78c3f 100%);
   }
-  
+
   &--list::after {
-    @include linear-gradient(180deg, $accent-pink 0%, #F75EBA 100%);
+    @include linear-gradient(180deg, $accent-pink 0%, #f75eba 100%);
   }
-  
+
   &--check::after {
-    @include linear-gradient(180deg, #3CD88D 0%, #4DBE87 100%);
+    @include linear-gradient(180deg, #3cd88d 0%, #4dbe87 100%);
   }
-  
+
   &--inspect::after {
-    @include linear-gradient(180deg, $accent-cyan 0%, #55B4D2 100%);
+    @include linear-gradient(180deg, $accent-cyan 0%, #55b4d2 100%);
   }
-  
+
   &--activity::after {
     background: $gradient-yellow;
   }
-  
+
   &--special::after {
-    @include linear-gradient(180deg, #FFDDE1 -5%, #F3AFB8 96.67%);
-    outline: 1px solid #F8C1C8;
+    @include linear-gradient(180deg, #ffdde1 -5%, #f3afb8 96.67%);
+    outline: 1px solid #f8c1c8;
     outline-offset: 2px;
   }
-  
+
   &--special img {
     filter: none;
   }
@@ -109,6 +114,7 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  flex-shrink: 0;
 }
 
 .appIcon {
@@ -119,11 +125,11 @@
   border-radius: $border-radius-md;
   transition: background 0.2s;
   position: relative;
-  
+
   &:hover {
     background: $bg-hover;
   }
-  
+
   // Inner app icon
   &::after {
     content: '';
@@ -132,32 +138,35 @@
     border-radius: 9px;
     position: absolute;
   }
-  
+
   img {
     width: 20px;
     height: 20px;
     z-index: 1;
     position: relative;
   }
-  
+
   &--cozucu::after {
-    @include linear-gradient(180deg, #D9E3EB 0%, #EEF2F3 100%);
+    @include linear-gradient(180deg, #d9e3eb 0%, #eef2f3 100%);
   }
-  
+
   &--simdi::after {
-    background: #2C2C60;
+    background: #2c2c60;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
   }
-  
+
   &--kocum::after {
-    background: radial-gradient(65.19% 65.19% at 25.31% 13.5%, #6DB1DE 0%, #2073AA 100%);
+    background: radial-gradient(
+      65.19% 65.19% at 25.31% 13.5%,
+      #6db1de 0%,
+      #2073aa 100%
+    );
   }
 }
 
 .feedbackSection {
-  position: absolute;
-  bottom: 50px;
-  left: 19px;
+  margin: 30px 0 50px 19px;
+  flex-shrink: 0;
 }
 
 .feedbackIcon {
@@ -168,21 +177,21 @@
   border-radius: $border-radius-md;
   transition: background 0.2s;
   position: relative;
-  
+
   &:hover {
     background: $bg-hover;
   }
-  
+
   // Inner feedback icon
   &::after {
     content: '';
     width: 30px;
     height: 30px;
     border-radius: 9px;
-    @include linear-gradient(180deg, #E7843C 0%, #E7983C 100%);
+    @include linear-gradient(180deg, #e7843c 0%, #e7983c 100%);
     position: absolute;
   }
-  
+
   img {
     width: 18px;
     height: 18px;

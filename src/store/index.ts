@@ -11,7 +11,7 @@ export const store = configureStore({
   },
   middleware: (getDefault) =>
     getDefault({ thunk: false, serializableCheck: false }).concat(
-      sagaMiddleware
+      sagaMiddleware,
     ),
 });
 

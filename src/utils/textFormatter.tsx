@@ -49,21 +49,21 @@ export const formatTextWithStyles = ({
       parts.push(
         <span key={`bu-${key++}`} className={bothClass}>
           {match[1]}
-        </span>
+        </span>,
       );
     } else if (match[2] !== undefined) {
       // underline group
       parts.push(
         <span key={`u-${key++}`} className={underlineClass}>
           {match[2]}
-        </span>
+        </span>,
       );
     } else if (match[3] !== undefined) {
       // bold group
       parts.push(
         <span key={`b-${key++}`} className={boldClass}>
           {match[3]}
-        </span>
+        </span>,
       );
     }
 

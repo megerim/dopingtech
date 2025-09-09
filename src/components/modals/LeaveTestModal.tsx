@@ -8,7 +8,11 @@ interface LeaveTestModalProps {
   onConfirm: () => void;
 }
 
-export const LeaveTestModal: FC<LeaveTestModalProps> = ({ isOpen, onClose, onConfirm }) => {
+export const LeaveTestModal: FC<LeaveTestModalProps> = ({
+  isOpen,
+  onClose,
+  onConfirm,
+}) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <div className={styles.container}>
@@ -17,18 +21,19 @@ export const LeaveTestModal: FC<LeaveTestModalProps> = ({ isOpen, onClose, onCon
         </div>
         <h2 className={styles.title}>Ayrılmak istediğine emin misin?</h2>
         <p className={styles.subtitle}>
-          Testi yarıda bırakıyorsun. İstediğin zaman kaldığın sorudan devam edebilirsin.
+          Testi yarıda bırakıyorsun. İstediğin zaman kaldığın sorudan devam
+          edebilirsin.
         </p>
         <div className={styles.buttonGroup}>
-          <button 
-            className={`${styles.button} ${styles.cancelButton}`} 
+          <button
+            className={`${styles.button} ${styles.cancelButton}`}
             onClick={onClose}
             type="button"
           >
             Vazgeç
           </button>
-          <button 
-            className={`${styles.button} ${styles.confirmButton}`} 
+          <button
+            className={`${styles.button} ${styles.confirmButton}`}
             onClick={onConfirm}
             type="button"
           >

@@ -55,7 +55,7 @@ const Modal: React.FC<MobileMenuModalProps> = ({
         </div>
       </div>
     </div>,
-    document.body
+    document.body,
   );
 };
 

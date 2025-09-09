@@ -54,11 +54,11 @@
 }
 
 .cancelButton {
-  background: #EDF2F4;
+  background: #edf2f4;
   color: $text-primary;
 
   &:hover {
-    background: #E5EAEC;
+    background: #e5eaec;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 }
@@ -68,7 +68,7 @@
   color: $text-inverted;
 
   &:hover {
-    background: linear-gradient(180deg, #FF5A5A 0%, #E84E4E 100%);
+    background: linear-gradient(180deg, #ff5a5a 0%, #e84e4e 100%);
     box-shadow: 0 2px 12px rgba(248, 80, 80, 0.3);
   }
 }

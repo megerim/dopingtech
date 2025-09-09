@@ -52,7 +52,7 @@ const testSlice = createSlice({
     },
     selectAnswer: (
       state,
-      action: PayloadAction<{ questionId: string; answer: string }>
+      action: PayloadAction<{ questionId: string; answer: string }>,
     ) => {
       if (state.isFinished) return;
       const { questionId, answer } = action.payload;
@@ -125,5 +125,5 @@ export const selectTestStats = createSelector(
 
     const net = correct - Math.floor(wrong / 3);
     return { correct, wrong, empty, net };
-  }
+  },
 );
