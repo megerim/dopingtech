@@ -38,7 +38,6 @@ const Modal: React.FC<MobileMenuModalProps> = ({
             className={styles.menuItem}
             onClick={() => {
               onFinishTest();
-              onClose();
             }}
           >
             <span>Testi Bitir</span>
