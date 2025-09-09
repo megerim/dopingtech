@@ -121,17 +121,16 @@
 .actionButton {
   width: 50px;
   height: 50px;
-  background-color: $btn-gray;
-  opacity: 0.4;
+  background-color: rgba(237, 242, 244, 0.4);
   border-radius: $border-radius-md;
   padding: 0;
   border: none;
   cursor: pointer;
   @include flex-center;
-  transition: opacity 0.2s ease;
+  transition: background-color 0.2s ease;
 
   &:hover {
-    opacity: 0.6;
+    background-color: rgba(237, 242, 244, 0.6);
   }
 
   img {
@@ -177,11 +176,11 @@
 }
 
 .bold {
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .both {
-  font-weight: 800;
+  font-weight: 700;
   text-decoration: underline;
   transition: background-color 0.3s ease;
 
