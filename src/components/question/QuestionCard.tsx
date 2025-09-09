@@ -5,15 +5,14 @@ import { useAppSelector } from '../../store/hooks';
 import { formatTextWithStyles } from '../../utils/textFormatter';
 
 export const QuestionCard = () => {
-  
   const { questions, currentQuestionIndex, isLoading, error } = useAppSelector(
-    (s) => s.test
+    (s) => s.test,
   );
   const current = questions[currentQuestionIndex];
 
   const formattedQuestion = useMemo(() => {
     if (!current?.question) return '';
-    
+
     return formatTextWithStyles({
       text: current.question,
       className: {
@@ -32,8 +31,8 @@ export const QuestionCard = () => {
             {isLoading
               ? 'Yükleniyor…'
               : error
-              ? `Hata: ${error}`
-              : `Soru: Türkçe #${currentQuestionIndex + 1}`}
+                ? `Hata: ${error}`
+                : `Soru: Türkçe #${currentQuestionIndex + 1}`}
           </span>
         </div>
         <div className={styles.actionButtons}>
@@ -55,30 +54,24 @@ export const QuestionCard = () => {
       </div>
 
       <div className={styles.contentSection}>
-        {(() => {
-          if (current) {
-            return (
-              <>
-                {current.description && (
-                  <div className={styles.quoteText}>
-                    <p>{current.description}</p>
-                  </div>
-                )}
-                <div className={styles.question}>
-                  <p>{formattedQuestion}</p>
-                </div>
-                {current.text && (
-                  <div className={styles.quoteText}>
-                    <p>{current.text}</p>
-                  </div>
-                )}
-                <Options />
-              </>
-            );
-          } else {
-            return null;
-          }
-        })()}
+        {current && (
+          <>
+            {current.description && (
+              <div className={styles.quoteText}>
+                <p>{current.description}</p>
+              </div>
+            )}
+            <div className={styles.question}>
+              <p>{formattedQuestion}</p>
+            </div>
+            {current.text && (
+              <div className={styles.quoteText}>
+                <p>{current.text}</p>
+              </div>
+            )}
+            <Options />
+          </>
+        )}
       </div>
     </div>
   );
