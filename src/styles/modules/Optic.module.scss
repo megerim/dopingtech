@@ -105,6 +105,8 @@
     font-weight: 600;
     color: $text-primary;
     font-size: 14px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   &__options {

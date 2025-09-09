@@ -24,8 +24,8 @@ const OptionsComponent = () => {
       {options.map((option, index) => {
         const selectedValue = current ? userAnswers[current.id] : undefined;
         const isSelected = selectedValue === option;
-  // Yeni mantık: "Cevapları Göster" açık olsa bile sadece kullanıcı bu soruda seçim yaptıysa doğru/yanlış göster
-  const reveal = showAnswers && !!selectedValue;
+        // Yeni mantık: "Cevapları Göster" açık olsa bile sadece kullanıcı bu soruda seçim yaptıysa doğru/yanlış göster
+        const reveal = showAnswers && !!selectedValue;
         const isCorrect = reveal && current?.correctAnswer === option;
         const isIncorrect =
           reveal && isSelected && current?.correctAnswer !== option;
@@ -48,8 +48,8 @@ const OptionsComponent = () => {
         } else if (isSelected) {
           stateClass = styles['answerItem__background--selected'];
         }
-  const backgroundClassName = `${baseClass} ${stateClass}`;
-  const showSolutionButton = reveal && isCorrect;
+        const backgroundClassName = `${baseClass} ${stateClass}`;
+        const showSolutionButton = reveal && isCorrect;
 
         return (
           <OptionItem
@@ -64,7 +64,7 @@ const OptionsComponent = () => {
             isFinished={isFinished}
             textClass={textClass}
             backgroundClassName={backgroundClassName}
-      showSolutionButton={showSolutionButton}
+            showSolutionButton={showSolutionButton}
           />
         );
       })}
