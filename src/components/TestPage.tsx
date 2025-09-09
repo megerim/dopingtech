@@ -8,6 +8,7 @@ import { ModalContainer } from './test/ModalContainer';
 import { ThemeProvider } from '../contexts/ThemeContext';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { loadTestStart, toggleShowAnswers } from '../store/slices/testSlice';
+import { AnswerSheetBottomSheet } from './modals/AnswerSheetBottomSheet';
 import { useModalManager } from '../hooks/useModalManager';
 import { useOpticScroll } from '../hooks/useOpticScroll';
 import { useTestActions } from '../hooks/useTestActions';
@@ -15,7 +16,7 @@ import styles from '../styles/modules/TestPage.module.scss';
 
 export const TestPage = () => {
   const dispatch = useAppDispatch();
-  const { currentQuestionIndex } = useAppSelector((s) => s.test);
+  const { currentQuestionIndex, showAnswers } = useAppSelector((s) => s.test);
 
   const { activeModal, openModal, closeModal } = useModalManager();
   const opticScrollAreaRef = useOpticScroll(currentQuestionIndex);
@@ -64,6 +65,11 @@ export const TestPage = () => {
           onOpenFinishModal={() => openModal('finish')}
           onToggleShowAnswers={() => dispatch(toggleShowAnswers())}
           stats={stats}
+        />
+
+        <AnswerSheetBottomSheet
+          isOpen={showAnswers}
+          onClose={() => dispatch(toggleShowAnswers())}
         />
       </Layout>
     </ThemeProvider>
