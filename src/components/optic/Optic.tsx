@@ -12,21 +12,20 @@ export const Optic = forwardRef<HTMLDivElement, {}>((_props, ref) => {
     showAnswers,
   } = useAppSelector((s) => s.test);
   const questionCount = questions.length || 15;
-  const answeredCount = questions.filter((q) => userAnswers[q.id]).length;
 
   return (
     <div className={styles.card}>
       <header className={styles.header}>
-        <img
-          className={styles.header__icon}
-          alt="Türkçe"
-          src="/dh/turkce.png"
-        />
+        <div className={styles.header__iconWrapper}>
+          <img
+            className={styles.header__iconImage}
+            alt="Türkçe"
+            src="/dh/turkce.png"
+          />
+        </div>
         <div className={styles.header__content}>
           <h2 className={styles.header__title}>Türkçe</h2>
-          <p
-            className={styles.header__subtitle}
-          >{`${answeredCount}/${questionCount} Soru`}</p>
+          <p className={styles.header__subtitle}>{`${questionCount} Soru`}</p>
         </div>
       </header>
 
