@@ -48,6 +48,7 @@ const OptionsComponent = () => {
           stateClass = styles['answerItem__background--selected'];
         }
         const backgroundClassName = `${baseClass} ${stateClass}`;
+    const showSolutionButton = reveal && isCorrect;
 
         return (
           <OptionItem
@@ -62,6 +63,7 @@ const OptionsComponent = () => {
             isFinished={isFinished}
             textClass={textClass}
             backgroundClassName={backgroundClassName}
+      showSolutionButton={showSolutionButton}
           />
         );
       })}

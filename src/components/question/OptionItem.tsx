@@ -15,6 +15,7 @@ interface OptionItemProps {
   isFinished: boolean;
   textClass: string;
   backgroundClassName: string;
+  showSolutionButton: boolean;
 }
 
 const OptionItemComponent = ({
@@ -28,6 +29,7 @@ const OptionItemComponent = ({
   isFinished,
   textClass,
   backgroundClassName,
+  showSolutionButton,
 }: OptionItemProps) => {
   const dispatch = useAppDispatch();
 
@@ -52,8 +54,19 @@ const OptionItemComponent = ({
     }
   };
 
+  const handleAnswerClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    if (!showSolutionButton && !isFinished) {
+      handleChange();
+    } else if (showSolutionButton) {
+      console.log('Çözüm görüntüleme aksiyonu tetiklendi:', currentId, option);
+    }
+  };
+
   return (
     <label className={styles.answerItem}>
+      <div className={backgroundClassName} />
       <div className={styles.answerItem__icon}>
         <input
           type="radio"
@@ -73,7 +86,28 @@ const OptionItemComponent = ({
           {option}) {formattedOptionText}
         </span>
       </div>
-      <div className={backgroundClassName} />
+      <button
+        type="button"
+        onClick={handleAnswerClick}
+        disabled={isFinished && !showSolutionButton}
+        className={
+          showSolutionButton
+            ? `${styles.actionButton} ${styles['actionButton--solution']}`
+            : styles.actionButton
+        }
+        aria-label={showSolutionButton ? 'Çözümü görüntüle' : 'Cevapla'}
+      >
+        {showSolutionButton ? (
+          <>
+            <span className={styles.actionButton__iconWrapper}>
+              <span className={styles.actionButton__playIcon} />
+            </span>
+            Çözümü görüntüle
+          </>
+        ) : (
+          'Cevapla'
+        )}
+      </button>
     </label>
   );
 };
