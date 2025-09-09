@@ -42,8 +42,8 @@
     }
 
     &--selected {
-      background-color: rgba(44, 62, 80, 0.1);
-      border: 1px solid $primary-dark;
+  background-color: rgba(96, 123, 150, 0.1);
+
     }
 
     &--correct {
@@ -253,9 +253,7 @@
       }
 
       &--selected {
-        background: $primary-hover;
-        border: none;
-        opacity: 1;
+  background: rgba(96, 123, 150, 0.1);
       }
 
       &--correct {
