@@ -80,7 +80,6 @@ const testSlice = createSlice({
       state.isFinished = true;
     },
     toggleShowAnswers: (state) => {
-      if (!state.isFinished) return; // only allow after finishing test
       state.showAnswers = !state.showAnswers;
     },
   },

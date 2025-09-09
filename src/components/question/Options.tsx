@@ -24,7 +24,7 @@ const OptionsComponent = () => {
       {options.map((option, index) => {
         const selectedValue = current ? userAnswers[current.id] : undefined;
         const isSelected = selectedValue === option;
-        const reveal = showAnswers && isFinished;
+        const reveal = showAnswers;
         const isCorrect = reveal && current?.correctAnswer === option;
         const isIncorrect =
           reveal && isSelected && current?.correctAnswer !== option;

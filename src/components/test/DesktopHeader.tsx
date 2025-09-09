@@ -32,14 +32,9 @@ export const DesktopHeader: React.FC<DesktopHeaderProps> = ({
               showAnswers ? styles['switch--on'] : ''
             }`}
             onClick={() => dispatch(toggleShowAnswers())}
-            disabled={!isFinished}
             aria-pressed={showAnswers}
             aria-label="Cevapları Göster"
-            title={
-              !isFinished
-                ? 'Testi bitirdikten sonra kullanılabilir'
-                : 'Cevapları göster'
-            }
+            title="Cevapları göster/gizle"
           >
             <span className={styles.switch__slider} />
           </button>

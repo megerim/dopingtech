@@ -7,7 +7,7 @@ import { TestNavigation } from './test/TestNavigation';
 import { ModalContainer } from './test/ModalContainer';
 import { ThemeProvider } from '../contexts/ThemeContext';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { loadTestStart } from '../store/slices/testSlice';
+import { loadTestStart, toggleShowAnswers } from '../store/slices/testSlice';
 import { useModalManager } from '../hooks/useModalManager';
 import { useOpticScroll } from '../hooks/useOpticScroll';
 import { useTestActions } from '../hooks/useTestActions';
@@ -62,6 +62,7 @@ export const TestPage = () => {
           }}
           onConfirmFinish={handleFinishTest}
           onOpenFinishModal={() => openModal('finish')}
+          onToggleShowAnswers={() => dispatch(toggleShowAnswers())}
           stats={stats}
         />
       </Layout>

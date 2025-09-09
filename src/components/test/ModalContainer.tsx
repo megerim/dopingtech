@@ -11,6 +11,7 @@ interface ModalContainerProps {
   onConfirmLeave: () => void;
   onConfirmFinish: () => void;
   onOpenFinishModal: () => void;
+  onToggleShowAnswers: () => void;
   stats: {
     net: number;
     correct: number;
@@ -25,6 +26,7 @@ export const ModalContainer: React.FC<ModalContainerProps> = ({
   onConfirmLeave,
   onConfirmFinish,
   onOpenFinishModal,
+  onToggleShowAnswers,
   stats,
 }) => {
   return (
@@ -49,7 +51,7 @@ export const ModalContainer: React.FC<ModalContainerProps> = ({
         isOpen={activeModal === 'mobileMenu'}
         onClose={onClose}
         onFinishTest={onOpenFinishModal}
-        onShowAnswerSheet={() => {}}
+        onShowAnswerSheet={onToggleShowAnswers}
       />
     </>
   );
